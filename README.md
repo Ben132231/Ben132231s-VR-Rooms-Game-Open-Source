@@ -1,7 +1,7 @@
 # ![](ReadMeImages/Game-Title.png)
 
 [![Download Project](https://img.shields.io/badge/Download%20Project-darkgreen.svg)](https://github.com/Ben132231/Ben132231s-VR-Rooms-Game-Open-Source/releases)
-[![Game Link](https://img.shields.io/badge/Game%20Link-darkgreen.svg)](https://docs.google.com/document/d/1pH6TDLgSVFSEfkZ4NPSbLHvhcHG7ee8M39ggTU1W7kE/edit?usp=sharing)
+[![Game Link](https://img.shields.io/badge/Game%20Link-darkgreen.svg)](https://ben132231.itch.io/ben132231s-vr-rooms-game)
 
 This is the open source project for Ben132231's VR Rooms Game.
 
