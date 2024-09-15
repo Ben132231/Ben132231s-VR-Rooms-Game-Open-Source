@@ -1,0 +1,23 @@
+Inspiration
+	Doors
+	Interminable Rooms
+	Rooms Low Detailed
+
+Credits
+	Interminable Rooms Wiki - For some sounds like
+		1. Locker
+		2. Table
+		3. Door
+		4. Locker Breaking
+		5. Metal Door Keycard Decline Sound (Every decline sound I used in this project)
+	Toby Fox/Undertale/Deltarune - Some sound effect and Mus_Smile
+
+Freesound.org Credits
+	GWMX_YOUTUBE03 - "Thud.wav" (Aka DeathThud)
+	eardeer - "explosion_low_fuse_1.wav" (H12_Transformation_Sound)
+	InspectorJ - "Wind, Synthesized, A.wav" (A200_LoopWindSound)
+	Traveler - "Cork3.aif" (PotionDrinking)
+
+Tutorials Used
+	Save System (Unfortunately is paid only to learn) : "https://www.udemy.com/share/10bkUR3@NGVsK82iyul31bJUWnghTi6XJXzOY5Ta51gCvzdx6-aGEC6OqW4L2cr1kSUNP7HkCg==/"
+	Trying to make New Inputs Work - Mech Mind Games : "How To Use Unity's NEW INPUT SYSTEM: SUPER EASY [Gamepad Joystick & Buttons!]"

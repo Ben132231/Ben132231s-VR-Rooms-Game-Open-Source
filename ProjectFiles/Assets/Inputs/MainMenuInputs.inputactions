@@ -1,0 +1,34 @@
+{
+    "name": "MainMenuInputs",
+    "maps": [
+        {
+            "name": "MainMenu",
+            "id": "14bc1c9c-2d7a-4d4f-9184-c94e70eff2be",
+            "actions": [
+                {
+                    "name": "Select",
+                    "type": "Button",
+                    "id": "9ab3a61b-1abe-4ec7-9e55-91ba00205ee5",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "4a0194fa-d4d6-48a2-8bb8-0e69bb03f45b",
+                    "path": "<XRController>{RightHand}/{TriggerButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
