@@ -118,6 +118,7 @@ GameObject:
   - component: {fileID: 1744666813977709296}
   - component: {fileID: 4598943162526678586}
   - component: {fileID: 6449901069031253251}
+  - component: {fileID: 4688894231069633035}
   m_Layer: 0
   m_Name: LockerDoor
   m_TagString: Untagged
@@ -203,6 +204,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c8eebf939367348a840af378ca457c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &4688894231069633035
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2653260098942705647}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7fd33a430dbcfda44b160b55099e441b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2829740241582812147
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,6 +236,7 @@ GameObject:
   - component: {fileID: 6704321045932410462}
   - component: {fileID: 8202642832092011334}
   - component: {fileID: 5315592054011856003}
+  - component: {fileID: 842867661680840251}
   - component: {fileID: 5219650145384580121}
   m_Layer: 8
   m_Name: BLocker
@@ -276,8 +299,18 @@ MonoBehaviour:
   hidingSpotType: 1
   HideSound: {fileID: 8300000, guid: f23f0d680638f7247afbb1fdbf212d4a, type: 3}
   UnhideSound: {fileID: 8300000, guid: f23f0d680638f7247afbb1fdbf212d4a, type: 3}
-  ControllerHidingPos: {fileID: 0}
-  ControllerUnhidingPos: {fileID: 0}
+--- !u!114 &842867661680840251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2829740241582812147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b34c51a8b02ac442a7b16356501f39a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!82 &5219650145384580121
 AudioSource:
   m_ObjectHideFlags: 0

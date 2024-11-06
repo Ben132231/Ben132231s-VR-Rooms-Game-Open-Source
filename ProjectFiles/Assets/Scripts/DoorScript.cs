@@ -6,7 +6,6 @@ public class DoorScript : MonoBehaviour
     public AudioClip[] DoorSound;
 
     public RoomGen roomGen;
-    public ChaosEffectsManager chaosEffectsManager;
     Animator doorAnimator;
     Collider doorCollider;
     MeshRenderer doorMeshRenderer;
@@ -24,10 +23,6 @@ public class DoorScript : MonoBehaviour
         if(other.CompareTag("PlayerHand") && !GorillaLocomotion.Player.Instance.IsDead)
         {
             OpenDoor(true);
-            if (chaosEffectsManager != null)
-            {
-                chaosEffectsManager.TriggerChaosFirstDoor();
-            }
         }
     }
 

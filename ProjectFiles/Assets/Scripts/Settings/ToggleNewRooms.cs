@@ -27,14 +27,14 @@ public class ToggleNewRooms : MonoBehaviour
         if (!toggle)
         {
             textObject.text = "Experimental Rooms : On";
-            SavingManager.gameData.NewRooms = true;
+            SavingManager.gameData.ExpRoomsToggle = true;
             Save();
             toggle = true;
         }
         else
         {
             textObject.text = "Experimental Rooms : Off";
-            SavingManager.gameData.NewRooms = false;
+            SavingManager.gameData.ExpRoomsToggle = false;
             Save();
             toggle = false;
         }
@@ -42,7 +42,7 @@ public class ToggleNewRooms : MonoBehaviour
 
     void Start()
     {
-        if (SavingManager.gameData.NewRooms)
+        if (SavingManager.gameData.ExpRoomsToggle)
         {
             textObject.text = "Experimental Rooms : On";
         }

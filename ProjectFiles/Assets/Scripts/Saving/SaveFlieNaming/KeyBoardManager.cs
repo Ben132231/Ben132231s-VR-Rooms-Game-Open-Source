@@ -203,7 +203,7 @@ public class KeyBoardManager : MonoBehaviour, ISaving
     {
         if (HasSetNewUsername)
         {
-            SceneManager.LoadScene("Tutorial");
+            SceneManager.LoadScene("Rooms");
         }
         if (HasCorrectCode)
         {

@@ -236,6 +236,7 @@ GameObject:
   - component: {fileID: 6704321045932410462}
   - component: {fileID: 8202642832092011334}
   - component: {fileID: 8732889673996746800}
+  - component: {fileID: 4005654556432666439}
   - component: {fileID: 5219650145384580121}
   m_Layer: 8
   m_Name: Locker
@@ -298,6 +299,18 @@ MonoBehaviour:
   hidingSpotType: 1
   HideSound: {fileID: 8300000, guid: f23f0d680638f7247afbb1fdbf212d4a, type: 3}
   UnhideSound: {fileID: 8300000, guid: f23f0d680638f7247afbb1fdbf212d4a, type: 3}
+--- !u!114 &4005654556432666439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2829740241582812147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b34c51a8b02ac442a7b16356501f39a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!82 &5219650145384580121
 AudioSource:
   m_ObjectHideFlags: 0

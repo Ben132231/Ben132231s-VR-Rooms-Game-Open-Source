@@ -23,7 +23,8 @@ public class GameData
 
     // Settings
     [field: SerializeField] public bool PlayerTurning { get; set; }
-    [field: SerializeField] public bool NewRooms { get; set; } = true;
+    [field: SerializeField] public float PlayerTurnSpeed { get; set; } = 65;
+    [field: SerializeField] public bool ExpRoomsToggle { get; set; } = true;
 
     // Save File And Save File Locks
     [field: SerializeField] public string Username { get; set; }

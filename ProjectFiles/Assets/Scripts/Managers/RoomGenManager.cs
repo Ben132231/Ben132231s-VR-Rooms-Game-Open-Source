@@ -8,6 +8,7 @@ public class RoomGenManager : MonoBehaviour
 
     public int DoorNumber;
     public string Section = "A";
+    public int EndingRoomNumber = 399;
     public GameObject CurrentGeneratedRoom;
     public Transform EndOfRoomPoint;
     public Transform DestroyPoint;

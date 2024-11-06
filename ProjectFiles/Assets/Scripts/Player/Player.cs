@@ -2,7 +2,6 @@
 {
     using UnityEngine;
     using UnityEngine.UI;
-    using UnityEngine.InputSystem;
 
     public class Player : MonoBehaviour
     {
@@ -567,24 +566,9 @@
         }
         #endregion
 
-        public void StandUpRight()
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
-        }
-
-        // Move this to sepreate rig
-        #region Chaos Mode
-        
-        public void UpsideDown()
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 180);
-        }
-
-        #endregion
-
         public void Turning(float TurnSpeed)
         {
-            transform.Rotate(Vector3.up * TurnSpeed * Time.deltaTime);
+            GorillaCamera.transform.Rotate(Vector3.up * TurnSpeed * Time.fixedDeltaTime);
         }
 
         public void PlayAudioAtPlayer(AudioClip audioClip, float volume, float pitch)

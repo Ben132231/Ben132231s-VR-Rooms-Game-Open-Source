@@ -200,39 +200,29 @@ public class EntityScript : MonoBehaviour
 
     IEnumerator CheckLocker()
     {
-        foreach (var lockers in Room_Target.GetComponentsInChildren<HidingScript>())
+        foreach (var lockers in Room_Target.GetComponentsInChildren<LockerObject>())
         {
-            if (lockers.name.Contains("Locker"))
+            Locker_Target = lockers.GetComponentInChildren<CheckingPos>().transform;
+            checkingPos = lockers.GetComponentInChildren<CheckingPos>();
+            yield return new WaitForSeconds(3f);
+            if (Vector3.Distance(transform.position, checkingPos.transform.position) < 0.2f && checkingPos != null)
             {
-                if (lockers.hidingSpotType == HideSpotType.Locker)
+                if (checkDeath != null && lockers.GetComponentInChildren<LockerDoorObject>() != null)
                 {
-                    Locker_Target = lockers.GetComponentInChildren<CheckingPos>().transform;
-                    checkingPos = lockers.GetComponentInChildren<CheckingPos>();
+                    StuffManager.Instance.fastAudioManager.CreateFastAudio(lockerSound, transform.position, 0.4f, Random.Range(0.95f, 1.15f), 40f, false);
+                    lockers.GetComponentInChildren<LockerDoorObject>().GetComponent<Animator>().Play("LockerOpen");
+                    yield return new WaitForSeconds(0.5f);
+                    checkDeath.toggleTrigger = true;
+                    yield return new WaitForSeconds(0.3f);
+                    lockers.GetComponentInChildren<LockerDoorObject>().GetComponent<Animator>().Play("LockerClose");
+                    checkDeath.toggleTrigger = false;
                 }
-                yield return new WaitForSeconds(3f);
-                if (Vector3.Distance(transform.position, checkingPos.transform.position) < 0.2f && checkingPos != null)
+                else
                 {
-                    if (checkDeath != null && lockers.GetComponentInChildren<LockerDoorObject>() != null)
-                    {
-                        StuffManager.Instance.fastAudioManager.CreateFastAudio(lockerSound, transform.position, 0.4f, Random.Range(0.95f, 1.15f), 40f, false);
-                        lockers.GetComponentInChildren<LockerDoorObject>().GetComponent<Animator>().Play("LockerOpen");
-                        yield return new WaitForSeconds(0.5f);
-                        checkDeath.toggleTrigger = true;
-                        yield return new WaitForSeconds(0.3f);
-                        lockers.GetComponentInChildren<LockerDoorObject>().GetComponent<Animator>().Play("LockerClose");
-                        checkDeath.toggleTrigger = false;
-                    }
-                    else
-                    {
-                        Debug.LogError("You didn't add CheckLockerDeath script to checkDeath.");
-                    }
+                    Debug.LogError("You didn't add CheckLockerDeath script to checkDeath.");
                 }
-                yield return new WaitForSeconds(1.8f);
             }
-            else
-            {
-                Locker_Target = RoomGenManager.Instance.DestroyPoint;
-            }
+            yield return new WaitForSeconds(1.8f);
         }
         Locker_Target = RoomGenManager.Instance.DestroyPoint;
     }

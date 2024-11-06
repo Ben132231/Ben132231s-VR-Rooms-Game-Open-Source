@@ -46,54 +46,43 @@ public class A154Script : MonoBehaviour
                 IsChecking = true;
             }
         }
-        if (transform.position.y > 16)
-        {
-            Destroy(gameObject);
-            StuffManager.Instance.fastAudioManager.CreateFastAudio(DespawnSound, transform.position, 0.4f, 0.7f, 100f, false);
-        }
     }
 
     IEnumerator CheckLocker()
     {
-        foreach (var lockers in Room_Target.GetComponentsInChildren<HidingScript>())
+        if (Room_Target.GetComponentInChildren<LockerObject>() == null)
         {
-            if (lockers.gameObject == null)
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+            yield break;
+        }
+        foreach (var lockers in Room_Target.GetComponentsInChildren<LockerObject>())
+        {
+            Locker_Target = lockers.GetComponentInChildren<CheckingPos>().transform;
+            checkingPos = lockers.GetComponentInChildren<CheckingPos>();
+            yield return new WaitForSeconds(2f);
+            if (Vector3.Distance(transform.position, checkingPos.transform.position) < 0.2f && checkingPos != null)
             {
-                Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-                Destroy(gameObject);
-            }
-            if (lockers.name.Contains("Locker"))
-            {
-                if (lockers.hidingSpotType == HideSpotType.Locker)
+                if (checkDeath != null)
                 {
-                    Locker_Target = lockers.GetComponentInChildren<CheckingPos>().transform;
-                    checkingPos = lockers.GetComponentInChildren<CheckingPos>();
+                    StuffManager.Instance.fastAudioManager.CreateFastAudio(lockerSound, transform.position, 0.4f, Random.Range(0.95f, 1.15f), 40f, false);
+                    lockers.GetComponentInChildren<LockerDoorObject>().GetComponent<Animator>().Play("LockerOpen");
+                    yield return new WaitForSeconds(0.5f);
+                    checkDeath.toggleTrigger = true;
+                    yield return new WaitForSeconds(0.3f);
+                    lockers.GetComponentInChildren<LockerDoorObject>().GetComponent<Animator>().Play("LockerClose");
+                    checkDeath.toggleTrigger = false;
                 }
-                yield return new WaitForSeconds(2f);
-                if (Vector3.Distance(transform.position, checkingPos.transform.position) < 0.2f && checkingPos != null)
+                else
                 {
-                    if (checkDeath != null)
-                    {
-                        StuffManager.Instance.fastAudioManager.CreateFastAudio(lockerSound, transform.position, 0.4f, Random.Range(0.95f, 1.15f), 40f, false);
-                        lockers.GetComponentInChildren<LockerDoorObject>().GetComponent<Animator>().Play("LockerOpen");
-                        yield return new WaitForSeconds(0.5f);
-                        checkDeath.toggleTrigger = true;
-                        yield return new WaitForSeconds(0.3f);
-                        lockers.GetComponentInChildren<LockerDoorObject>().GetComponent<Animator>().Play("LockerClose");
-                        checkDeath.toggleTrigger = false;
-                    }
-                    else
-                    {
-                        Debug.LogError("You didn't add CheckLockerDeath script to checkDeath.");
-                    }
+                    Debug.LogError("You didn't add CheckLockerDeath script to checkDeath.");
                 }
-                yield return new WaitForSeconds(1.4f);
             }
-            else
-            {
-                Locker_Target.position = new Vector3(transform.position.x, transform.position.y + 20f, transform.position.z);
-            }
+            yield return new WaitForSeconds(1.4f);
         }
         Locker_Target.position = new Vector3(transform.position.x, transform.position.y + 20f, transform.position.z);
+        yield return new WaitForSeconds(1.5f);
+        StuffManager.Instance.fastAudioManager.CreateFastAudio(DespawnSound, transform.position, 0.4f, 0.7f, 100f, false);
+        Destroy(gameObject);
     }
 }

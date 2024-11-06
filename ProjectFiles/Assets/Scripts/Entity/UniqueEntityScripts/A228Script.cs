@@ -67,33 +67,23 @@ public class A228Script : MonoBehaviour
 
     IEnumerator CheckLocker()
     {
-        foreach (var lockers in Room_Target.GetComponentsInChildren<HidingScript>())
+        foreach (var lockers in Room_Target.GetComponentsInChildren<LockerObject>())
         {
-            if (lockers.name.Contains("Locker"))
+            Locker_Target = lockers.GetComponentInChildren<CheckingPos>().transform;
+            checkingPos = lockers.GetComponentInChildren<CheckingPos>();
+            yield return new WaitForSeconds(0.15f);
+            if (Vector3.Distance(transform.position, checkingPos.transform.position) < 0.2f && checkingPos != null)
             {
-                if (lockers.hidingSpotType == HideSpotType.Locker)
+                StuffManager.Instance.fastAudioManager.CreateFastAudio(BreakLockerClip, transform.position, 0.4f, Random.Range(0.95f, 1.15f), 40f, false);
+                if (lockers.GetComponentInChildren<LockerDoorObject>() != null)
                 {
-                    Locker_Target = lockers.GetComponentInChildren<CheckingPos>().transform;
-                    checkingPos = lockers.GetComponentInChildren<CheckingPos>();
+                    lockers.GetComponentInChildren<LockerDoorObject>().GetComponent<MeshFilter>().mesh = BrokenLockerDoorMesh;
+                    lockers.GetComponentInChildren<LockerDoorObject>().GetComponent<MeshRenderer>().materials[1] = null;
                 }
-                yield return new WaitForSeconds(0.15f);
-                if (Vector3.Distance(transform.position, checkingPos.transform.position) < 0.2f && checkingPos != null)
+                if (lockers.GetComponent<BoxCollider>() != null)
                 {
-                    StuffManager.Instance.fastAudioManager.CreateFastAudio(BreakLockerClip, transform.position, 0.4f, Random.Range(0.95f, 1.15f), 40f, false);
-                    if (lockers.GetComponentInChildren<LockerDoorObject>() != null)
-                    {
-                        lockers.GetComponentInChildren<LockerDoorObject>().GetComponent<MeshFilter>().mesh = BrokenLockerDoorMesh;
-                        lockers.GetComponentInChildren<LockerDoorObject>().GetComponent<MeshRenderer>().materials[1] = null;
-                    }
-                    if (lockers.GetComponent<BoxCollider>() != null)
-                    {
-                        Destroy(lockers.GetComponent<BoxCollider>());
-                    }
+                    Destroy(lockers.GetComponent<BoxCollider>());
                 }
-            }
-            else
-            {
-                Locker_Target = RoomGenManager.Instance.DestroyPoint;
             }
         }
         Locker_Target = RoomGenManager.Instance.DestroyPoint;

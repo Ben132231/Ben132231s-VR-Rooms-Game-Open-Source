@@ -3,10 +3,13 @@ using System.Collections.Generic;
 
 public class RoomGen : MonoBehaviour, ISaving
 {
-    [Header("Rooms Objects")]
+    [Header("Rooms To Generate")]
     public List<GameObject> OldRooms;
-    public List<GameObject> NewRooms;
+    public List<GameObject> ExpRooms;
     public GameObject EndingRoom;
+
+    [Header("Room To Parent Transform")]
+    public Transform RoomParentTransform;
 
     [Header("Lighting and Skybox")]
     public bool TakeLightingToggle = true;
@@ -39,10 +42,10 @@ public class RoomGen : MonoBehaviour, ISaving
         RoomGenManager.Instance.SkyIntensity = 1f;
         skybox.SetFloat("_Exposure", 1f);
 
-        if (SavingManager.gameData.NewRooms)
+        if (SavingManager.gameData.ExpRoomsToggle)
         {
             Rooms.AddRange(OldRooms);
-            Rooms.AddRange(NewRooms);
+            Rooms.AddRange(ExpRooms);
         }
         else
         {
@@ -52,22 +55,24 @@ public class RoomGen : MonoBehaviour, ISaving
 
     public void RoomGenerate()
     {
-        // A Section Room Gen
-        if (RoomGenManager.Instance.Section == "A" && !TriggerEndingRoom)
+        // Basic Room Gen
+        if (!TriggerEndingRoom)
         {
-            RoomGenManager.Instance.CurrentGeneratedRoom = Instantiate(Rooms[Random.Range(0, Rooms.Count)], RoomGenManager.Instance.EndOfRoomPoint.position, Quaternion.identity);
+            RoomGenManager.Instance.CurrentGeneratedRoom = Instantiate(Rooms[Random.Range(0, Rooms.Count)], RoomParentTransform);
+            RoomGenManager.Instance.CurrentGeneratedRoom.transform.position = RoomGenManager.Instance.EndOfRoomPoint.position;
         }
 
-        // Start of B Section Room
-        if (TriggerEndingRoom && RoomGenManager.Instance.Section == "A")
+        // Ending Room Gen
+        if (TriggerEndingRoom)
         {
-            RoomGenManager.Instance.CurrentGeneratedRoom = Instantiate(EndingRoom, RoomGenManager.Instance.EndOfRoomPoint.position, Quaternion.identity);
+            RoomGenManager.Instance.CurrentGeneratedRoom = Instantiate(EndingRoom, RoomParentTransform);
+            RoomGenManager.Instance.CurrentGeneratedRoom.transform.position = RoomGenManager.Instance.EndOfRoomPoint.position;
         }
 
-        // Makes TriggerEndingRoom = True when reached room 400
-        if (RoomGenManager.Instance.DoorNumber == 399)
+        // Makes TriggerEndingRoom = True when reached the EndingRoomNumber in RoomGenManager
+        if (RoomGenManager.Instance.DoorNumber == RoomGenManager.Instance.EndingRoomNumber)
         {
-            if (!StuffManager.Instance.IsCheating && !SavingManager.gameData.HasBeatASection)
+            if (!StuffManager.Instance.IsCheating && !SavingManager.gameData.HasBeatASection && RoomGenManager.Instance.Section == "A")
             {
                 statsManager.HasBeatASection();
                 Save();
