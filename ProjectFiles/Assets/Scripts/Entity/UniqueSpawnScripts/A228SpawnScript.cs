@@ -4,10 +4,9 @@ public class A228SpawnScript : MonoBehaviour, ISaving
 {
     public GameObject EntityPrefab;
     public float DistenceFromDoor = 60f;
-    public float TimerMinValue = 120;
-    public float TimerMaxValue = 160;
-    public int SetDoor = 24;
-    public string SetSection = "A";
+    public float TimerMinValue = 168;
+    public float TimerMaxValue = 252;
+    public int SetDoor = 228;
     public StatsManager statsManager;
     float TimerDelay;
     GameObject SpawnedEntity;
@@ -15,11 +14,11 @@ public class A228SpawnScript : MonoBehaviour, ISaving
 
     public void Spawn()
     {
-        if (RoomGenManager.Instance.DoorNumber > SetDoor && RoomGenManager.Instance.Section == SetSection)
+        if (RoomGenInfo.Instance.DoorNumber > SetDoor)
         {
             if (SpawnedEntity == null && ReadyToSpawn)
             {
-                SpawnedEntity = Instantiate(EntityPrefab, new Vector3(RoomGenManager.Instance.DestroyPoint.position.x, RoomGenManager.Instance.DestroyPoint.position.y, RoomGenManager.Instance.DestroyPoint.position.z - DistenceFromDoor), Quaternion.identity);
+                SpawnedEntity = Instantiate(EntityPrefab, new Vector3(RoomGenInfo.Instance.DestroyPoint.position.x, RoomGenInfo.Instance.DestroyPoint.position.y, RoomGenInfo.Instance.DestroyPoint.position.z - DistenceFromDoor), Quaternion.identity);
                 ReadyToSpawn = false;
                 if (!StuffManager.Instance.IsCheating)
                 {

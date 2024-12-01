@@ -18,7 +18,7 @@ public class CutSceneManager : MonoBehaviour
             CutSceneRigObject.Instance.gameObject.GetComponentInChildren<AudioListener>().enabled = true;
             PlayerRigCamera.enabled = false;
             PlayerRigListener.enabled = false;
-            GorillaLocomotion.Player.Instance.locomotionEnabledLayers = nothingLayer;
+            Player.Instance.locomotionEnabledLayers = nothingLayer;
         }
     }
 
@@ -31,7 +31,7 @@ public class CutSceneManager : MonoBehaviour
             PlayerRigCamera.enabled = true;
             PlayerRigListener.enabled = true;
             Destroy(CutSceneRigObject.Instance.gameObject);
-            GorillaLocomotion.Player.Instance.locomotionEnabledLayers = defaultLayer;
+            Player.Instance.locomotionEnabledLayers = defaultLayer;
         }
     }
 }

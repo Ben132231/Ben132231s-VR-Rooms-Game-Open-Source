@@ -45,9 +45,9 @@ public class A200Script : MonoBehaviour
 
     void A200Movement()
     {
-        if (GorillaLocomotion.Player.Instance.HidingSpot != "" || GorillaLocomotion.Player.Instance.IsDead)
+        if (Player.Instance.HidingSpot != "" || Player.Instance.IsDead)
         {
-            transform.position = Vector3.MoveTowards(transform.position, RoomGenManager.Instance.EntitySpawnPoint.position, speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, RoomGenInfo.Instance.EntitySpawnPoint.position, speed * Time.deltaTime);
         }
         else
         {

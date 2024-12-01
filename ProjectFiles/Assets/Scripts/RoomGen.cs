@@ -20,9 +20,12 @@ public class RoomGen : MonoBehaviour, ISaving
 
     [Header("Entity Stuff")]
     public SpawnEntity[] BasicEntitySpawnScripts;
+    public A60SpawnScript A60SpawnScript;
     public A87SpawnScript[] A87SpawnScripts;
     public A108SpawnScript[] A108SpawnScripts;
+    public A132SpawnScript A132SpawnScript;
     public A154SpawnScript A154SpawnScript;
+    public A176SpawnScript A176SpawnScript;
     public A228SpawnScript[] A228SpawnScripts;
     public A200SpawnScript[] A200SpawnScripts;
     public MissingNoSpawnScript[] MissingNoSpawnScripts;
@@ -38,8 +41,8 @@ public class RoomGen : MonoBehaviour, ISaving
     void Start()
     {
         RenderSettings.ambientIntensity = 1f;
-        RoomGenManager.Instance.SunLight.intensity = 1f;
-        RoomGenManager.Instance.SkyIntensity = 1f;
+        RoomGenInfo.Instance.SunLight.intensity = 1f;
+        RoomGenInfo.Instance.SkyIntensity = 1f;
         skybox.SetFloat("_Exposure", 1f);
 
         if (SavingManager.gameData.ExpRoomsToggle)
@@ -58,21 +61,21 @@ public class RoomGen : MonoBehaviour, ISaving
         // Basic Room Gen
         if (!TriggerEndingRoom)
         {
-            RoomGenManager.Instance.CurrentGeneratedRoom = Instantiate(Rooms[Random.Range(0, Rooms.Count)], RoomParentTransform);
-            RoomGenManager.Instance.CurrentGeneratedRoom.transform.position = RoomGenManager.Instance.EndOfRoomPoint.position;
+            RoomGenInfo.Instance.CurrentGeneratedRoom = Instantiate(Rooms[Random.Range(0, Rooms.Count)], RoomParentTransform);
+            RoomGenInfo.Instance.CurrentGeneratedRoom.transform.position = RoomGenInfo.Instance.EndOfRoomPoint.position;
         }
 
         // Ending Room Gen
         if (TriggerEndingRoom)
         {
-            RoomGenManager.Instance.CurrentGeneratedRoom = Instantiate(EndingRoom, RoomParentTransform);
-            RoomGenManager.Instance.CurrentGeneratedRoom.transform.position = RoomGenManager.Instance.EndOfRoomPoint.position;
+            RoomGenInfo.Instance.CurrentGeneratedRoom = Instantiate(EndingRoom, RoomParentTransform);
+            RoomGenInfo.Instance.CurrentGeneratedRoom.transform.position = RoomGenInfo.Instance.EndOfRoomPoint.position;
         }
 
-        // Makes TriggerEndingRoom = True when reached the EndingRoomNumber in RoomGenManager
-        if (RoomGenManager.Instance.DoorNumber == RoomGenManager.Instance.EndingRoomNumber)
+        // Makes TriggerEndingRoom = True when reached the EndingRoomNumber in RoomGenInfo
+        if (RoomGenInfo.Instance.DoorNumber == RoomGenInfo.Instance.EndingRoomNumber)
         {
-            if (!StuffManager.Instance.IsCheating && !SavingManager.gameData.HasBeatASection && RoomGenManager.Instance.Section == "A")
+            if (!StuffManager.Instance.IsCheating && !SavingManager.gameData.HasBeatASection && RoomGenInfo.Instance.Section == "A")
             {
                 statsManager.HasBeatASection();
                 Save();
@@ -87,11 +90,11 @@ public class RoomGen : MonoBehaviour, ISaving
         }
 
         // Slowly make the rooms darker and darker
-        if (RoomGenManager.Instance.DoorNumber > 48 && TakeLightingToggle)
+        if (RoomGenInfo.Instance.DoorNumber > 48 && TakeLightingToggle)
         {
             RenderSettings.ambientIntensity -= 0.05f;
-            RoomGenManager.Instance.SunLight.intensity -= 0.05f;
-            RoomGenManager.Instance.SkyIntensity = RenderSettings.ambientIntensity;
+            RoomGenInfo.Instance.SunLight.intensity -= 0.05f;
+            RoomGenInfo.Instance.SkyIntensity = RenderSettings.ambientIntensity;
             if (skybox.GetFloat("_Exposure") < 0.03f)
             {
                 skybox.SetFloat("_Exposure", 0.03f);
@@ -103,28 +106,28 @@ public class RoomGen : MonoBehaviour, ISaving
         }
 
         // Increase Door Number
-        RoomGenManager.Instance.DoorNumber++;
+        RoomGenInfo.Instance.DoorNumber++;
 
         // Updates Destroy Point Transfrom
-        RoomGenManager.Instance.DestroyPoint.position = RoomGenManager.Instance.CurrentGeneratedRoom.GetComponentInChildren<EndOfRoom>().transform.position + new Vector3(0f, 1.25f, 0f);
+        RoomGenInfo.Instance.DestroyPoint.position = RoomGenInfo.Instance.CurrentGeneratedRoom.GetComponentInChildren<EndOfRoom>().transform.position + new Vector3(0f, 1.25f, 0f);
 
         // Updates End Of Room Transfrom
-        RoomGenManager.Instance.EndOfRoomPoint = RoomGenManager.Instance.CurrentGeneratedRoom.GetComponentInChildren<EndOfRoom>().transform;
+        RoomGenInfo.Instance.EndOfRoomPoint = RoomGenInfo.Instance.CurrentGeneratedRoom.GetComponentInChildren<EndOfRoom>().transform;
 
         // Detect if A154SpawnPoint exist then updates A154SpawnTransform
-        if (RoomGenManager.Instance.CurrentGeneratedRoom.GetComponentInChildren<A154SpawnPoint>() != null)
+        if (RoomGenInfo.Instance.CurrentGeneratedRoom.GetComponentInChildren<A154SpawnPoint>() != null)
         {
-            RoomGenManager.Instance.A154SpawnTransform = RoomGenManager.Instance.CurrentGeneratedRoom.GetComponentInChildren<A154SpawnPoint>().transform;
+            RoomGenInfo.Instance.A154SpawnTransform = RoomGenInfo.Instance.CurrentGeneratedRoom.GetComponentInChildren<A154SpawnPoint>().transform;
         }
         else
         {
-            RoomGenManager.Instance.A154SpawnTransform = null;
+            RoomGenInfo.Instance.A154SpawnTransform = null;
         }
 
         // Updates DoorTitle in the current room if there is one
-        if (RoomGenManager.Instance.CurrentGeneratedRoom.GetComponentInChildren<DoorTitle>() != null)
+        if (RoomGenInfo.Instance.CurrentGeneratedRoom.GetComponentInChildren<DoorTitle>() != null)
         {
-            RoomGenManager.Instance.CurrentGeneratedRoom.GetComponentInChildren<DoorTitle>().UpdateDoorTitle();
+            RoomGenInfo.Instance.CurrentGeneratedRoom.GetComponentInChildren<DoorTitle>().UpdateDoorTitle();
         }
 
         if (!UsingCheckPoint && !StuffManager.Instance.IsCheating)
@@ -141,12 +144,13 @@ public class RoomGen : MonoBehaviour, ISaving
 
     void SpawnEntity()
     {
-        if(!UsingCheckPoint && !TriggerEndingRoom && !RoomGenManager.Instance.DisableEntitySpawning)
+        if(!UsingCheckPoint && !TriggerEndingRoom && !RoomGenInfo.Instance.DisableEntitySpawning)
         {
             foreach (var entitySpawnScirpts in this.BasicEntitySpawnScripts)
             {
                 entitySpawnScirpts.Spawn();
             }
+            this.A60SpawnScript.Spawn();
             foreach (var a87SpawnScripts in this.A87SpawnScripts)
             {
                 a87SpawnScripts.Spawn();
@@ -155,7 +159,9 @@ public class RoomGen : MonoBehaviour, ISaving
             {
                 a108SpawnScripts.Spawn();
             }
+            this.A132SpawnScript.Spawn();
             this.A154SpawnScript.Spawn();
+            this.A176SpawnScript.Spawn();
             foreach (var a228SpawnScripts in this.A228SpawnScripts)
             {
                 a228SpawnScripts.Spawn();
@@ -174,34 +180,34 @@ public class RoomGen : MonoBehaviour, ISaving
 
     void CheckPointSave()
     {
-        if (RoomGenManager.Instance.Section == "A" && !StuffManager.Instance.IsCheating)
+        if (RoomGenInfo.Instance.Section == "A" && !StuffManager.Instance.IsCheating)
         {
-            if (RoomGenManager.Instance.DoorNumber == 50 && !SavingManager.gameData.Reach_A50)
+            if (RoomGenInfo.Instance.DoorNumber == 50 && !SavingManager.gameData.Reach_A50)
             {
                 SavingManager.gameData.Reach_A50 = true;
                 Save();
                 StuffManager.Instance.subtitleManager.MakeMessage("A-50 Checkpoint Unlocked.", 5f);
             }
-            if (RoomGenManager.Instance.DoorNumber == 100 && !SavingManager.gameData.Reach_A100)
+            if (RoomGenInfo.Instance.DoorNumber == 100 && !SavingManager.gameData.Reach_A100)
             {
                 SavingManager.gameData.Reach_A100 = true;
                 Save();
                 StuffManager.Instance.subtitleManager.MakeMessage("A-100 Checkpoint Unlocked.", 5f);
             }
-            if (RoomGenManager.Instance.DoorNumber == 150 && !SavingManager.gameData.Reach_A150)
+            if (RoomGenInfo.Instance.DoorNumber == 150 && !SavingManager.gameData.Reach_A150)
             {
                 SavingManager.gameData.Reach_A150 = true;
                 Save();
                 StuffManager.Instance.subtitleManager.MakeMessage("A-150 Checkpoint Unlocked.", 5f);
 
             }
-            if (RoomGenManager.Instance.DoorNumber == 200 && !SavingManager.gameData.Reach_A200)
+            if (RoomGenInfo.Instance.DoorNumber == 200 && !SavingManager.gameData.Reach_A200)
             {
                 SavingManager.gameData.Reach_A200 = true;
                 Save();
                 StuffManager.Instance.subtitleManager.MakeMessage("A-200 Checkpoint Unlocked.", 5f);
             }
-            if (RoomGenManager.Instance.DoorNumber == 300 && !SavingManager.gameData.Reach_A300)
+            if (RoomGenInfo.Instance.DoorNumber == 300 && !SavingManager.gameData.Reach_A300)
             {
                 SavingManager.gameData.Reach_A300 = true;
                 Save();

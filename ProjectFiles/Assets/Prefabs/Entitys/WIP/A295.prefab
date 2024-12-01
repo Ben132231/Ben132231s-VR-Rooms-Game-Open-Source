@@ -51,9 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 80
   Clones:
-  - {fileID: 3113362618307936150, guid: 253db299833e84f4292df79cfbe8469c, type: 3}
   - {fileID: 3113362618307936150, guid: 687ba2e3d48d64244878ab6e54b49e18, type: 3}
-  - {fileID: 3113362618307936150, guid: f8e65962713ce8e41919ab73272c7d73, type: 3}
   SetMaxSpawnedClones: 5
   ExplosionPrefab: {fileID: 352009056302333568, guid: dd9224e2c9563684b970a201b4036bcf, type: 3}
   SpiteObject: {fileID: 4429368875440803633}
@@ -313,7 +311,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 27, y: 13.5, z: 13.5}
+  m_LocalScale: {x: 27, y: 18, z: 12}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8153216582640467265}

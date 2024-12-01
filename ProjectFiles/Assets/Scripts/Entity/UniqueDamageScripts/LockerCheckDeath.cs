@@ -7,11 +7,11 @@ public class LockerCheckDeath : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("MainCamera") && GorillaLocomotion.Player.Instance.HidingSpot == HidingSpotKiller && toggleTrigger)
+        if (other.CompareTag("MainCamera") && Player.Instance.HidingSpot == HidingSpotKiller && toggleTrigger)
         {
-            if (!GorillaLocomotion.Player.Instance.IsDead)
+            if (!Player.Instance.IsDead)
             {
-                GorillaLocomotion.Player.Instance.DamagePlayer(9999);
+                Player.Instance.DamagePlayer(9999);
             }
         }
     }

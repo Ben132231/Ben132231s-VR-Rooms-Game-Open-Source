@@ -1,23 +1,18 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class A132Script : MonoBehaviour
 {
-    public Image A132Sprite;
-    public Image A132SpriteHat;
+    public Image[] A132Sprites;
     public AudioSource audioSource;
     public AudioClip LineAudioClip;
     public AudioClip MagicAudioClip;
     public Animator animator;
     public float EntitySpawnDis = 150f;
 
-
     int MaxEntitysToPick;
     int EntityToPick;
-    float SpawnEntityTimer;
-    bool FinishLineAudio;
-    bool FinishMagicAudio;
-    bool DoingAnimation;
 
     [Header("Entity Prefabs and Spawn Scripts")]
     public GameObject A12Prefab;
@@ -30,266 +25,145 @@ public class A132Script : MonoBehaviour
 
     void Awake()
     {
-        A132Sprite.enabled = true;
-        A132SpriteHat.enabled = true;
-        FinishMagicAudio = false;
-        FinishLineAudio = false;
-        SpawnEntityTimer = 12;
+        foreach (var sprites in A132Sprites)
+        {
+            sprites.enabled = true;
+        }
         MaxEntitysToPick = 8;
         EntityToPick = Random.Range(1, MaxEntitysToPick);
+        StartCoroutine(BeginSummoning());
     }
 
-    void Update()
+    IEnumerator BeginSummoning()
     {
-        SpawnEntityTimer -= Time.deltaTime;
         if (EntityToPick == 1)
         {
-            if (SpawnEntityTimer < 9 && !DoingAnimation)
+            yield return new WaitForSeconds(3f);
+            animator.Play("A132_A12Anim");
+            yield return new WaitForSeconds(3f);
+            audioSource.PlayOneShot(LineAudioClip);
+            yield return new WaitForSeconds(5f);
+            foreach (var sprites in A132Sprites)
             {
-                animator.Play("A132_A12Anim");
-                DoingAnimation = true;
+                sprites.enabled = false;
             }
-            if (SpawnEntityTimer < 6)
-            {
-                if (!audioSource.isPlaying && !FinishLineAudio)
-                {
-                    audioSource.PlayOneShot(LineAudioClip);
-                    FinishLineAudio = true;
-                }
-            }
-            if (SpawnEntityTimer < 1)
-            {
-                A132Sprite.enabled = false;
-                A132SpriteHat.enabled = false;
-                if (!audioSource.isPlaying && !FinishMagicAudio)
-                {
-                    audioSource.PlayOneShot(MagicAudioClip);
-                    FinishMagicAudio = true;
-                }
-            }
-            if (SpawnEntityTimer < 0)
-            {
-                Instantiate(A12Prefab, RoomGenManager.Instance.DestroyPoint.position + new Vector3(0, 0, -EntitySpawnDis), Quaternion.identity);
-                Destroy(gameObject);
-            }
+            audioSource.PlayOneShot(MagicAudioClip);
+            yield return new WaitForSeconds(2f);
+            Instantiate(A12Prefab, RoomGenInfo.Instance.DestroyPoint.position + new Vector3(0, 0, -EntitySpawnDis), Quaternion.identity);
+            Destroy(gameObject);
         }
         else if (EntityToPick == 2)
         {
-            if (SpawnEntityTimer < 9 && !DoingAnimation)
+            yield return new WaitForSeconds(3f);
+            animator.Play("A132_A38Anim");
+            yield return new WaitForSeconds(3f);
+            audioSource.PlayOneShot(LineAudioClip);
+            yield return new WaitForSeconds(5f);
+            foreach (var sprites in A132Sprites)
             {
-                animator.Play("A132_A38Anim");
-                DoingAnimation = true;
+                sprites.enabled = false;
             }
-            if (SpawnEntityTimer < 6)
-            {
-                if (!audioSource.isPlaying && !FinishLineAudio)
-                {
-                    audioSource.PlayOneShot(LineAudioClip);
-                    FinishLineAudio = true;
-                }
-            }
-            if (SpawnEntityTimer < 1)
-            {
-                A132Sprite.enabled = false;
-                A132SpriteHat.enabled = false;
-                if (!audioSource.isPlaying && !FinishMagicAudio)
-                {
-                    audioSource.PlayOneShot(MagicAudioClip);
-                    FinishMagicAudio = true;
-                }
-            }
-            if (SpawnEntityTimer < 0)
-            {
-                Instantiate(A38Prefab, RoomGenManager.Instance.DestroyPoint.position + new Vector3(0, 0, -EntitySpawnDis), Quaternion.identity);
-                Destroy(gameObject);
-            }
+            audioSource.PlayOneShot(MagicAudioClip);
+            yield return new WaitForSeconds(2f);
+            Instantiate(A38Prefab, RoomGenInfo.Instance.DestroyPoint.position + new Vector3(0, 0, -EntitySpawnDis), Quaternion.identity);
+            Destroy(gameObject);
         }
         else if (EntityToPick == 3)
         {
-            if (SpawnEntityTimer < 9 && !DoingAnimation)
+            yield return new WaitForSeconds(3f);
+            animator.Play("A132_A60Anim");
+            yield return new WaitForSeconds(3f);
+            audioSource.PlayOneShot(LineAudioClip);
+            yield return new WaitForSeconds(5f);
+            foreach (var sprites in A132Sprites)
             {
-                animator.Play("A132_A60Anim");
-                DoingAnimation = true;
+                sprites.enabled = false;
             }
-            if (SpawnEntityTimer < 6)
-            {
-                if (!audioSource.isPlaying && !FinishLineAudio)
-                {
-                    audioSource.PlayOneShot(LineAudioClip);
-                    FinishLineAudio = true;
-                }
-            }
-            if (SpawnEntityTimer < 1)
-            {
-                A132Sprite.enabled = false;
-                A132SpriteHat.enabled = false;
-                if (!audioSource.isPlaying && !FinishMagicAudio)
-                {
-                    audioSource.PlayOneShot(MagicAudioClip);
-                    FinishMagicAudio = true;
-                }
-            }
-            if (SpawnEntityTimer < 0)
-            {
-                Instantiate(A60Prefab, RoomGenManager.Instance.DestroyPoint.position + new Vector3(0, 0, -EntitySpawnDis), Quaternion.identity);
-                Destroy(gameObject);
-            }
+            audioSource.PlayOneShot(MagicAudioClip);
+            yield return new WaitForSeconds(2f);
+            Instantiate(A60Prefab, RoomGenInfo.Instance.DestroyPoint.position + new Vector3(0, 0, -EntitySpawnDis), Quaternion.identity);
+            Destroy(gameObject);
         }
         else if (EntityToPick == 4)
         {
-            if (SpawnEntityTimer < 9 && !DoingAnimation)
+            yield return new WaitForSeconds(3f);
+            animator.Play("A132_A87Anim");
+            yield return new WaitForSeconds(3f);
+            audioSource.PlayOneShot(LineAudioClip);
+            yield return new WaitForSeconds(5f);
+            foreach (var sprites in A132Sprites)
             {
-                animator.Play("A132_A87Anim");
-                DoingAnimation = true;
+                sprites.enabled = false;
             }
-            if (SpawnEntityTimer < 6)
-            {
-                if (!audioSource.isPlaying && !FinishLineAudio)
-                {
-                    audioSource.PlayOneShot(LineAudioClip);
-                    FinishLineAudio = true;
-                }
-            }
-            if (SpawnEntityTimer < 1)
-            {
-                A132Sprite.enabled = false;
-                A132SpriteHat.enabled = false;
-                if (!audioSource.isPlaying && !FinishMagicAudio)
-                {
-                    audioSource.PlayOneShot(MagicAudioClip);
-                    FinishMagicAudio = true;
-                }
-            }
-            if (SpawnEntityTimer < 0)
-            {
-                StuffManager.Instance.a87SpawnScript.ForceSpawn();
-                Destroy(gameObject);
-            }
+            audioSource.PlayOneShot(MagicAudioClip);
+            yield return new WaitForSeconds(2f);
+            StuffManager.Instance.a87SpawnScript.ForceSpawn();
+            Destroy(gameObject);
         }
         else if (EntityToPick == 5)
         {
-            if (SpawnEntityTimer < 9 && !DoingAnimation)
+            yield return new WaitForSeconds(3f);
+            animator.Play("A132_A108Anim");
+            yield return new WaitForSeconds(3f);
+            audioSource.PlayOneShot(LineAudioClip);
+            yield return new WaitForSeconds(5f);
+            foreach (var sprites in A132Sprites)
             {
-                animator.Play("A132_A108Anim");
-                DoingAnimation = true;
+                sprites.enabled = false;
             }
-            if (SpawnEntityTimer < 6)
-            {
-                if (!audioSource.isPlaying && !FinishLineAudio)
-                {
-                    audioSource.PlayOneShot(LineAudioClip);
-                    FinishLineAudio = true;
-                }
-            }
-            if (SpawnEntityTimer < 1)
-            {
-                A132Sprite.enabled = false;
-                A132SpriteHat.enabled = false;
-                if (!audioSource.isPlaying && !FinishMagicAudio)
-                {
-                    audioSource.PlayOneShot(MagicAudioClip);
-                    FinishMagicAudio = true;
-                }
-            }
-            if (SpawnEntityTimer < 0)
-            {
-                Instantiate(A108Prefab, RoomGenManager.Instance.DestroyPoint.position + new Vector3(0, 0, -EntitySpawnDis), Quaternion.identity);
-                StuffManager.Instance.a108ScreenEffect.Play("A108_ScreenEffectAnim");
-                Destroy(gameObject);
-            }
+            audioSource.PlayOneShot(MagicAudioClip);
+            yield return new WaitForSeconds(2f);
+            Instantiate(A108Prefab, RoomGenInfo.Instance.DestroyPoint.position + new Vector3(0, 0, -EntitySpawnDis), Quaternion.identity);
+            StuffManager.Instance.a108ScreenEffect.Play("A108_ScreenEffectAnim");
+            Destroy(gameObject);
         }
         else if (EntityToPick == 6)
         {
-            if (SpawnEntityTimer < 9 && !DoingAnimation)
+            yield return new WaitForSeconds(3f);
+            animator.Play("A132_A176Anim");
+            yield return new WaitForSeconds(3f);
+            audioSource.PlayOneShot(LineAudioClip);
+            yield return new WaitForSeconds(5f);
+            foreach (var sprites in A132Sprites)
             {
-                animator.Play("A132_A176Anim");
-                DoingAnimation = true;
+                sprites.enabled = false;
             }
-            if (SpawnEntityTimer < 6)
-            {
-                if (!audioSource.isPlaying && !FinishLineAudio)
-                {
-                    audioSource.PlayOneShot(LineAudioClip);
-                    FinishLineAudio = true;
-                }
-            }
-            if (SpawnEntityTimer < 1)
-            {
-                A132Sprite.enabled = false;
-                A132SpriteHat.enabled = false;
-                if (!audioSource.isPlaying && !FinishMagicAudio)
-                {
-                    audioSource.PlayOneShot(MagicAudioClip);
-                    FinishMagicAudio = true;
-                }
-            }
-            if (SpawnEntityTimer < 0)
-            {
-                Instantiate(A176Prefab, RoomGenManager.Instance.DestroyPoint.position + new Vector3(0, 0, -EntitySpawnDis), Quaternion.identity);
-                Destroy(gameObject);
-            }
+            audioSource.PlayOneShot(MagicAudioClip);
+            yield return new WaitForSeconds(2f);
+            Instantiate(A176Prefab, RoomGenInfo.Instance.DestroyPoint.position + new Vector3(0, 0, -EntitySpawnDis), Quaternion.identity);
+            Destroy(gameObject);
         }
         else if (EntityToPick == 7)
         {
-            if (SpawnEntityTimer < 9 && !DoingAnimation)
+            yield return new WaitForSeconds(3f);
+            animator.Play("A132_A200Anim");
+            yield return new WaitForSeconds(3f);
+            audioSource.PlayOneShot(LineAudioClip);
+            yield return new WaitForSeconds(5f);
+            foreach (var sprites in A132Sprites)
             {
-                animator.Play("A132_A200Anim");
-                DoingAnimation = true;
+                sprites.enabled = false;
             }
-            if (SpawnEntityTimer < 6)
-            {
-                if (!audioSource.isPlaying && !FinishLineAudio)
-                {
-                    audioSource.PlayOneShot(LineAudioClip);
-                    FinishLineAudio = true;
-                }
-            }
-            if (SpawnEntityTimer < 1)
-            {
-                A132Sprite.enabled = false;
-                A132SpriteHat.enabled = false;
-                if (!audioSource.isPlaying && !FinishMagicAudio)
-                {
-                    audioSource.PlayOneShot(MagicAudioClip);
-                    FinishMagicAudio = true;
-                }
-            }
-            if (SpawnEntityTimer < 0)
-            {
-                Instantiate(A200Prefab, RoomGenManager.Instance.DestroyPoint.position + new Vector3(0, 0, 4.5f), Quaternion.identity);
-                Destroy(gameObject);
-            }
+            audioSource.PlayOneShot(MagicAudioClip);
+            yield return new WaitForSeconds(2f);
+            Instantiate(A200Prefab, RoomGenInfo.Instance.DestroyPoint.position + new Vector3(0, 0, 4.5f), Quaternion.identity);
+            Destroy(gameObject);
         }
         else if (EntityToPick == 8)
         {
-            if (SpawnEntityTimer < 9 && !DoingAnimation)
+            yield return new WaitForSeconds(3f);
+            animator.Play("A132_A228Anim");
+            yield return new WaitForSeconds(3f);
+            audioSource.PlayOneShot(LineAudioClip);
+            yield return new WaitForSeconds(5f);
+            foreach (var sprites in A132Sprites)
             {
-                animator.Play("A132_A228Anim");
-                DoingAnimation = true;
+                sprites.enabled = false;
             }
-            if (SpawnEntityTimer < 6)
-            {
-                if (!audioSource.isPlaying && !FinishLineAudio)
-                {
-                    audioSource.PlayOneShot(LineAudioClip);
-                    FinishLineAudio = true;
-                }
-            }
-            if (SpawnEntityTimer < 1)
-            {
-                A132Sprite.enabled = false;
-                A132SpriteHat.enabled = false;
-                if (!audioSource.isPlaying && !FinishMagicAudio)
-                {
-                    audioSource.PlayOneShot(MagicAudioClip);
-                    FinishMagicAudio = true;
-                }
-            }
-            if (SpawnEntityTimer < 0)
-            {
-                Instantiate(A228Prefab, RoomGenManager.Instance.DestroyPoint.position + new Vector3(0, 0, -EntitySpawnDis), Quaternion.identity);
-                Destroy(gameObject);
-            }
+            audioSource.PlayOneShot(MagicAudioClip);
+            yield return new WaitForSeconds(2f);
+            Instantiate(A228Prefab, RoomGenInfo.Instance.DestroyPoint.position + new Vector3(0, 0, -EntitySpawnDis), Quaternion.identity);
+            Destroy(gameObject);
         }
         else
         {

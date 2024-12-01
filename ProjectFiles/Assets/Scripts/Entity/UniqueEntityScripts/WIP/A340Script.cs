@@ -28,7 +28,7 @@ public class A340Script : MonoBehaviour
     {
         if (!ReachedCurrentRoom)
         {
-            transform.position = Vector3.MoveTowards(transform.position, RoomGenManager.Instance.DestroyPoint.position, speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, RoomGenInfo.Instance.DestroyPoint.position, speed * Time.deltaTime);
         }
         if (ReadyToDestroy)
         {
@@ -38,7 +38,7 @@ public class A340Script : MonoBehaviour
 
     void Detroyer()
     {
-        if (Vector3.Distance(transform.position, RoomGenManager.Instance.DestroyPoint.position) < 6 && !ReachedCurrentRoom)
+        if (Vector3.Distance(transform.position, RoomGenInfo.Instance.DestroyPoint.position) < 6 && !ReachedCurrentRoom)
         {
             ReachedCurrentRoom = true;
             StartCoroutine(Desent());
@@ -66,7 +66,7 @@ public class A340Script : MonoBehaviour
     IEnumerator Rebounding()
     {
         speed = 0f;
-        transform.position = RoomGenManager.Instance.EntitySpawnPoint.position;
+        transform.position = RoomGenInfo.Instance.EntitySpawnPoint.position;
         ReadyToDestroy = false;
         ReachedCurrentRoom = false;
         float RandomTimer = Random.Range(14f, 24f);

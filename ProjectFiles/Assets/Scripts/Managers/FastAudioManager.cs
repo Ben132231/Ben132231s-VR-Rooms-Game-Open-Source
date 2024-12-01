@@ -24,6 +24,25 @@ public class FastAudioManager : MonoBehaviour
         FastAudioObject.name = audioClip.name;
     }
 
+    public void CreateFastAudio(AudioClip audioClip, Transform transform, float volume, float pitch, float audioMaxDistence, bool Is2dAudio)
+    {
+        FastAudioObject = Instantiate(FastAudioPrefab, transform);
+        FastAudioObject.GetComponent<AudioSource>().clip = audioClip;
+        FastAudioObject.GetComponent<AudioSource>().pitch = pitch;
+        FastAudioObject.GetComponent<AudioSource>().volume = volume;
+        FastAudioObject.GetComponent<AudioSource>().maxDistance = audioMaxDistence;
+        FastAudioObject.GetComponent<AudioSource>().Play();
+        if (Is2dAudio)
+        {
+            FastAudioObject.GetComponent<AudioSource>().spatialBlend = 0.0f;
+        }
+        else
+        {
+            FastAudioObject.GetComponent<AudioSource>().spatialBlend = 1.0f;
+        }
+        FastAudioObject.name = audioClip.name;
+    }
+
     public GameObject GetFastAudioGameObject()
     {
         return FastAudioObject;

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8153216582640467265}
   - component: {fileID: 6628246678346788166}
   - component: {fileID: 3312654035849605516}
-  - component: {fileID: 3786615115885458023}
+  - component: {fileID: 595508541455217242}
   m_Layer: 0
   m_Name: A12
   m_TagString: Entity
@@ -49,7 +49,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 421379878e91ad34bbcdaa8b7d51544d, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.3
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -166,7 +166,7 @@ MonoBehaviour:
   DelayMovement: 1
   DelayTimer: 1.5
   DelaySounds: {fileID: 8531649398107360804}
---- !u!114 &3786615115885458023
+--- !u!114 &595508541455217242
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -175,30 +175,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 99004527140239570}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cb1e5983d0ff024fb9bbff5933c6e00, type: 3}
+  m_Script: {fileID: 11500000, guid: 01be00f1015d110fd8192159944cd397, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityScript: {fileID: 3312654035849605516}
+  a12Script: {fileID: 3312654035849605516}
   entityShakeScript: {fileID: 5078837551338611149}
-  TransformationAnimator: {fileID: 1703415736019595829}
-  TransformingAnimationName: A12_Transforming
-  VariantAnimationName: H12_SpriteAnimation
-  MinSetTimeToTransform: 180
-  MaxSetTimeToTransform: 300
-  SetReduceSpeed: 8
-  SetReduceVolume: 0.8
-  SetEntitySpeedWhenDone: 20
-  SetShake: 0.22
-  SetDelayTimer: 5.5
-  EntityAudioSource: {fileID: 6525319244805000537}
-  VariantEntityAudioClip: {fileID: 8300000, guid: 331bd3958f6f8d7458abe2e2595e0cab, type: 3}
+  animator: {fileID: 1703415736019595829}
+  transformingAnimationName: A12_Transforming
+  variantAnimationName: H12_SpriteAnim
+  RandomTimes:
+  - 180
+  - 200
+  - 220
+  - 240
+  - 260
+  - 280
+  - 300
+  setSpeedWhenDone: 20
+  setShake: 0.22
+  entityAudioSource: {fileID: 6525319244805000537}
+  variantEntityAudio: {fileID: 8300000, guid: 331bd3958f6f8d7458abe2e2595e0cab, type: 3}
   finishTransformationAudio: {fileID: 8300000, guid: f350ae9f874372448b13b5bd4b390712, type: 3}
-  AudioVolume: 0.4
-  AudioPitch: 1
-  AudioMaxDis: 275
-  SetEntityAudio: 0.25
-  EntityAudioMaxDis: 245
-  Timer: 0
 --- !u!1 &2306074389597090453
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,7 +241,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 5611f32e62140d44eb53561b152d0093, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.3
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -253,7 +250,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 130
+  MaxDistance: 180
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0
@@ -370,7 +367,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 27, y: 13.5, z: 13.5}
+  m_LocalScale: {x: 27, y: 18, z: 12}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8153216582640467265}
@@ -445,7 +442,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1.5, y: 1.5}
+  m_SizeDelta: {x: 1.75, y: 1.75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &7185765284345333685
 Canvas:
@@ -543,7 +540,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1.5, y: 1.5}
+  m_SizeDelta: {x: 1.75, y: 1.75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3989633721896903053
 CanvasRenderer:

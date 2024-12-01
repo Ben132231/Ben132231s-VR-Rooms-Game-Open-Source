@@ -19,7 +19,7 @@ public class MissingNoSpawnScript : MonoBehaviour, ISaving
         ChanceToSpawn = Random.Range(1, MaxChanceNumber);
         if (ChanceToSpawn == SetNumberToSpawn)
         {
-            Instantiate(EntityPrefab, RoomGenManager.Instance.DestroyPoint.position + new Vector3(0, 0, -distenceFromDoor), Quaternion.identity);
+            Instantiate(EntityPrefab, RoomGenInfo.Instance.DestroyPoint.position + new Vector3(0, 0, -distenceFromDoor), Quaternion.identity);
             if (!StuffManager.Instance.IsCheating)
             {
                 statsManager.AddToEntitysEncounterd();

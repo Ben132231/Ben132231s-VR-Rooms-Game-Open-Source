@@ -3,9 +3,9 @@ using UnityEngine;
 public class A87SpawnScript : MonoBehaviour, ISaving
 {
     [SerializeField] int Chances;
-    public int SetChance = 12;
+    public int SetChance = 14;
+    public int MaxRandomNumber = 16;
     public int SetDoor = 87;
-    public string SetSection = "A";
     public GameObject EntityPrefab;
     public StatsManager statsManager;
 
@@ -18,14 +18,13 @@ public class A87SpawnScript : MonoBehaviour, ISaving
 
     public void Spawn()
     {
-        if (RoomGenManager.Instance.DoorNumber > SetDoor && RoomGenManager.Instance.Section == SetSection)
+        if (RoomGenInfo.Instance.DoorNumber > SetDoor)
         {
-            int setChance2 = SetChance - 2;
-            Chances = Random.Range(1, SetChance);
-            if (Chances > setChance2)
+            Chances = Random.Range(1, MaxRandomNumber);
+            if (Chances > SetChance)
             {
-                float xPosition = RoomGenManager.Instance.EndOfRoomPoint.position.x - Random.Range(xPositionMin, xPositionMax);
-                float zPosition = RoomGenManager.Instance.EndOfRoomPoint.position.z - Random.Range(zPositionMin, zPositionMax);
+                float xPosition = RoomGenInfo.Instance.EndOfRoomPoint.position.x - Random.Range(xPositionMin, xPositionMax);
+                float zPosition = RoomGenInfo.Instance.EndOfRoomPoint.position.z - Random.Range(zPositionMin, zPositionMax);
                 Instantiate(EntityPrefab, new Vector3(xPosition, yPositionHeight, zPosition), Quaternion.identity);
                 if (!StuffManager.Instance.IsCheating)
                 {
@@ -38,8 +37,8 @@ public class A87SpawnScript : MonoBehaviour, ISaving
 
     public void ForceSpawn()
     {
-        float xPosition = RoomGenManager.Instance.EndOfRoomPoint.position.x - Random.Range(xPositionMin, xPositionMax);
-        float zPosition = RoomGenManager.Instance.EndOfRoomPoint.position.z - Random.Range(zPositionMin, zPositionMax);
+        float xPosition = RoomGenInfo.Instance.EndOfRoomPoint.position.x - Random.Range(xPositionMin, xPositionMax);
+        float zPosition = RoomGenInfo.Instance.EndOfRoomPoint.position.z - Random.Range(zPositionMin, zPositionMax);
         Instantiate(EntityPrefab, new Vector3(xPosition, yPositionHeight, zPosition), Quaternion.identity);
     }
 

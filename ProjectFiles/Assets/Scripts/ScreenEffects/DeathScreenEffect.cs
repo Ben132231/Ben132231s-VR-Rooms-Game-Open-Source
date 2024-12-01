@@ -18,7 +18,7 @@ public class DeathScreenEffect : MonoBehaviour
 
     void Update()
     {
-        if (GorillaLocomotion.Player.Instance.IsDead)
+        if (Player.Instance.IsDead)
         {
             postProcess.isGlobal = true;
             colorGrading.active = toggle;
@@ -27,7 +27,7 @@ public class DeathScreenEffect : MonoBehaviour
         }
         else
         {
-            RenderSettings.ambientIntensity = RoomGenManager.Instance.SunLight.intensity;
+            RenderSettings.ambientIntensity = RoomGenInfo.Instance.SunLight.intensity;
             postProcess.isGlobal = false;
         }
     }

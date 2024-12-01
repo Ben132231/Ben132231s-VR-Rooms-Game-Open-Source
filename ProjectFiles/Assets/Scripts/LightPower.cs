@@ -11,24 +11,24 @@ public class LightPower : MonoBehaviour
 
     void Update()
     {
-        if (GorillaLocomotion.Player.Instance.CurrentHeadLight.intensity > 0)
+        if (Player.Instance.CurrentHeadLight.intensity > 0)
         {
-            GorillaLocomotion.Player.Instance.DrainLightsIntensity(DrainSpeed * Time.deltaTime);
+            Player.Instance.DrainLightsIntensity(DrainSpeed * Time.deltaTime);
         }
     }
 
     public void OnUseLightPower(InputAction.CallbackContext context)
     {
-        if (context.performed && !GorillaLocomotion.Player.Instance.CurrentHeadLight.gameObject.name.Contains("NormalLight") && !GorillaLocomotion.Player.Instance.CurrentHeadLight.gameObject.name.Contains("NightVision"))
+        if (context.performed && !Player.Instance.CurrentHeadLight.gameObject.name.Contains("NormalLight") && !Player.Instance.CurrentHeadLight.gameObject.name.Contains("NightVision"))
         {
-            if (GorillaLocomotion.Player.Instance.CurrentHeadLight.intensity < MaxPowerForHeadLight)
+            if (Player.Instance.CurrentHeadLight.intensity < MaxPowerForHeadLight)
             {
-                GorillaLocomotion.Player.Instance.PowerHeadSpotLightIntensity(AddPowerAmount);
-                GorillaLocomotion.Player.Instance.PlayAudioAtPlayer(shakeAudio, 0.4f, 1f);
+                Player.Instance.PowerHeadSpotLightIntensity(AddPowerAmount);
+                Player.Instance.PlayAudioAtPlayer(shakeAudio, 0.4f, 1f);
             }
-            if (GorillaLocomotion.Player.Instance.BodyLight.intensity < MaxPowerForOtherLights)
+            if (Player.Instance.BodyLight.intensity < MaxPowerForOtherLights)
             {
-                GorillaLocomotion.Player.Instance.PowerOtherLightsIntensity(AddPowerAmount);
+                Player.Instance.PowerOtherLightsIntensity(AddPowerAmount);
             }
         }
     }

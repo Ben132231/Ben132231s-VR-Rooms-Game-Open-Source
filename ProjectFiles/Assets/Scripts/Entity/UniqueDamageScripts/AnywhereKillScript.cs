@@ -6,9 +6,9 @@ public class AnywhereKillScript : MonoBehaviour
     {
         if (other.CompareTag("MainCamera"))
         {
-            if (!GorillaLocomotion.Player.Instance.IsDead && !GorillaLocomotion.Player.Instance.GodMode)
+            if (!Player.Instance.IsDead && !Player.Instance.GodMode)
             {
-                GorillaLocomotion.Player.Instance.DamagePlayer(9999);
+                Player.Instance.DamagePlayer(9999);
             }
         }
     }

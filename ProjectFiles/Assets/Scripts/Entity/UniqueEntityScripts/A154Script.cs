@@ -21,12 +21,13 @@ public class A154Script : MonoBehaviour
     Transform Locker_Target;
     CheckingPos checkingPos;
     bool IsChecking;
+    GameObject DespawnTransform;
 
     private void Awake()
     {
         DelayBeforeChecking = SetDelayBeforeChecking;
         KillTrigger.enabled = false;
-        Room_Target = RoomGenManager.Instance.CurrentGeneratedRoom;
+        Room_Target = RoomGenInfo.Instance.CurrentGeneratedRoom;
     }
 
     private void Update()
@@ -80,9 +81,12 @@ public class A154Script : MonoBehaviour
             }
             yield return new WaitForSeconds(1.4f);
         }
-        Locker_Target.position = new Vector3(transform.position.x, transform.position.y + 20f, transform.position.z);
+        DespawnTransform = new GameObject("A154DespawnTransform");
+        DespawnTransform.transform.position = new Vector3(transform.position.x, transform.position.y + 20f, transform.position.z);
+        Locker_Target = DespawnTransform.transform;
         yield return new WaitForSeconds(1.5f);
         StuffManager.Instance.fastAudioManager.CreateFastAudio(DespawnSound, transform.position, 0.4f, 0.7f, 100f, false);
+        Destroy(DespawnTransform);
         Destroy(gameObject);
     }
 }

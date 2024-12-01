@@ -39,19 +39,19 @@ public class A60Script : MonoBehaviour
     void A60Movement()
     {
         
-        if (Vector3.Distance(transform.position, RoomGenManager.Instance.DestroyPoint.position) < 12.5f)
+        if (Vector3.Distance(transform.position, RoomGenInfo.Instance.DestroyPoint.position) < 12.5f)
         {
             speed = 2f;
         }
-        transform.position = Vector3.MoveTowards(transform.position, RoomGenManager.Instance.DestroyPoint.position, speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, RoomGenInfo.Instance.DestroyPoint.position, speed * Time.deltaTime);
     }
 
     void A60Destroy()
     {
-        if (Vector3.Distance(transform.position, RoomGenManager.Instance.DestroyPoint.position) < 0.6f)
+        if (Vector3.Distance(transform.position, RoomGenInfo.Instance.DestroyPoint.position) < 0.6f)
         {
             Destroy(gameObject);
-            RoomGenManager.Instance.CurrentGeneratedRoom.GetComponentInChildren<CurrentDoor>().GetComponent<DoorScript>().OpenDoor(false);
+            RoomGenInfo.Instance.CurrentGeneratedRoom.GetComponentInChildren<CurrentDoor>().GetComponent<DoorScript>().OpenDoor(false);
         }
     }
 }

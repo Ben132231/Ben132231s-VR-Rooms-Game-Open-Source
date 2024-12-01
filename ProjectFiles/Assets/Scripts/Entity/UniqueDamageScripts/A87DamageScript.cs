@@ -20,7 +20,7 @@ public class A87DamageScript : MonoBehaviour
     {
         if (other.CompareTag("MainCamera"))
         {
-            GorillaLocomotion.Player.Instance.DamagePlayer(RandomValue[Random.Range(0, RandomValue.Length)]);
+            Player.Instance.DamagePlayer(RandomValue[Random.Range(0, RandomValue.Length)]);
             Destroy(selfObject);
         }
     }

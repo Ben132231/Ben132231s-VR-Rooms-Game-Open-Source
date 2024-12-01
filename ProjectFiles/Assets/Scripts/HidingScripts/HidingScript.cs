@@ -19,7 +19,7 @@ public class HidingScript : MonoBehaviour
         if (other.CompareTag("MainCamera"))
         {
             audioSource.PlayOneShot(HideSound);
-            GorillaLocomotion.Player.Instance.HidingSpot = hidingSpotType.ToString();
+            Player.Instance.HidingSpot = hidingSpotType.ToString();
         }
     }
 
@@ -28,7 +28,7 @@ public class HidingScript : MonoBehaviour
         if (other.CompareTag("MainCamera"))
         {
             audioSource.PlayOneShot(UnhideSound);
-            GorillaLocomotion.Player.Instance.HidingSpot = "";
+            Player.Instance.HidingSpot = "";
         }
     }
 }

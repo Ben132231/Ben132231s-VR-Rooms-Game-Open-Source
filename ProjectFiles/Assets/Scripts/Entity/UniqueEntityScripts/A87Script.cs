@@ -53,7 +53,7 @@ public class A87Script : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("MainCamera") && !isAngry)
+        if (other.CompareTag("MainCamera") && !isAngry && !Player.Instance.IsDead)
         {
             isAngry = true;
             animator.SetTrigger("TriggerAngry");

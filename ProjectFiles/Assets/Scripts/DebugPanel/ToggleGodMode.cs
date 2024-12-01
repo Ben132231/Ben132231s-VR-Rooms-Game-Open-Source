@@ -13,7 +13,7 @@ public class ToggleGodMode : MonoBehaviour
     {
         if (!toggle)
         {
-            GorillaLocomotion.Player.Instance.GodMode = true;
+            Player.Instance.GodMode = true;
             CheckMarkBox.sprite = Checked;
 
             toggle = true;
@@ -21,7 +21,7 @@ public class ToggleGodMode : MonoBehaviour
         }
         else
         {
-            GorillaLocomotion.Player.Instance.GodMode = false;
+            Player.Instance.GodMode = false;
             CheckMarkBox.sprite = Unchecked;
 
             toggle = false;

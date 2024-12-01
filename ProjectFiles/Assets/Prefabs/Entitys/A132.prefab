@@ -219,8 +219,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2729bd38c18b10c4eaa4565134a41e84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  A132Sprite: {fileID: 3443186936604729113}
-  A132SpriteHat: {fileID: 1517823217585726135}
+  A132Sprites:
+  - {fileID: 3443186936604729113}
+  - {fileID: 1517823217585726135}
   audioSource: {fileID: 2191128566499986661}
   LineAudioClip: {fileID: 8300000, guid: 35efaa35b0f432a48ab4f530f77b3c46, type: 3}
   MagicAudioClip: {fileID: 8300000, guid: 8f55c844c67479240b9c71db9a8d8681, type: 3}

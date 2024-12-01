@@ -60,9 +60,9 @@ public class A330Script : MonoBehaviour
 
     void Awake()
     {
-        SetDoorThenDestroyEntity = RoomGenManager.Instance.DoorNumber + SetDoorUntilDespawn;
-        SetDoorToInceaseSpeed1 = RoomGenManager.Instance.DoorNumber + IncreaseSpeed1SetDoor;
-        SetDoorToInceaseSpeed2 = RoomGenManager.Instance.DoorNumber + IncreaseSpeed2SetDoor;
+        SetDoorThenDestroyEntity = RoomGenInfo.Instance.DoorNumber + SetDoorUntilDespawn;
+        SetDoorToInceaseSpeed1 = RoomGenInfo.Instance.DoorNumber + IncreaseSpeed1SetDoor;
+        SetDoorToInceaseSpeed2 = RoomGenInfo.Instance.DoorNumber + IncreaseSpeed2SetDoor;
         AttackTimer = Random.Range(SetMinAttackTimer, SetMaxAttackTimer);
     }
 
@@ -92,12 +92,12 @@ public class A330Script : MonoBehaviour
 
     void Movement()
     {
-        transform.position = Vector3.MoveTowards(transform.position, RoomGenManager.Instance.DestroyPoint.position, speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, RoomGenInfo.Instance.DestroyPoint.position, speed * Time.deltaTime);
     }
 
     void OtherDestroy()
     {
-        if (Vector3.Distance(transform.position, RoomGenManager.Instance.DestroyPoint.position) < 0.4f)
+        if (Vector3.Distance(transform.position, RoomGenInfo.Instance.DestroyPoint.position) < 0.4f)
         {
             Destroy(gameObject);
         }
@@ -105,11 +105,11 @@ public class A330Script : MonoBehaviour
 
     void CheckingStatUpdate()
     {
-        if (GorillaLocomotion.Player.Instance.HidingSpot == "")
+        if (Player.Instance.HidingSpot == "")
         {
             EntityAnimator.SetBool("IsChecking", false);
         }
-        if (GorillaLocomotion.Player.Instance.HidingSpot != "")
+        if (Player.Instance.HidingSpot != "")
         {
             EntityAnimator.SetBool("IsChecking", true);
         }
@@ -117,7 +117,7 @@ public class A330Script : MonoBehaviour
 
     void TriggerEnding()
     {
-        if (RoomGenManager.Instance.DoorNumber > SetDoorThenDestroyEntity && !FinishRun)
+        if (RoomGenInfo.Instance.DoorNumber > SetDoorThenDestroyEntity && !FinishRun)
         {
             FinishRun = true;
             if (AttackObject != null)
@@ -131,7 +131,7 @@ public class A330Script : MonoBehaviour
     void IncreaseSpeedByDoorOpenAmount()
     {
         // Phase 2
-        if (RoomGenManager.Instance.DoorNumber > SetDoorToInceaseSpeed1 && !HasInceaseSpeed1)
+        if (RoomGenInfo.Instance.DoorNumber > SetDoorToInceaseSpeed1 && !HasInceaseSpeed1)
         {
             speed = IncreaseSpeed1;
             StuffManager.Instance.fastAudioManager.CreateFastAudio(IncreaseSpeedAlarm, transform.position, 0.4f, 1f, 800f, true);
@@ -140,7 +140,7 @@ public class A330Script : MonoBehaviour
             SetMaxAttackTimer = IncreaseAttack1Max;
         }
         // Phase 3
-        else if (RoomGenManager.Instance.DoorNumber > SetDoorToInceaseSpeed2 && !HasInceaseSpeed2)
+        else if (RoomGenInfo.Instance.DoorNumber > SetDoorToInceaseSpeed2 && !HasInceaseSpeed2)
         {
             speed = IncreaseSpeed2;
             StuffManager.Instance.fastAudioManager.CreateFastAudio(IncreaseSpeedAlarm, transform.position, 0.4f, 1f, 800f, true);
@@ -152,11 +152,11 @@ public class A330Script : MonoBehaviour
 
     void Attacks()
     {
-        if (!GorillaLocomotion.Player.Instance.IsDead)
+        if (!Player.Instance.IsDead)
         {
             AttackTimer -= Time.deltaTime;
         }
-        if (AttackTimer < 0 && !FinishRun && !GorillaLocomotion.Player.Instance.IsDead)
+        if (AttackTimer < 0 && !FinishRun && !Player.Instance.IsDead)
         {
             AttackObject = Instantiate(AttackPrefab, transform.position, Quaternion.identity);
             AttackTimer = Random.Range(SetMinAttackTimer, SetMaxAttackTimer);

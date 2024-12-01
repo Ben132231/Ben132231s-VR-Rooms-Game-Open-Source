@@ -19,16 +19,16 @@ public class DebugTpCurrentRoom : MonoBehaviour
     {
         if (TeleportingPlayer)
         {
-            GorillaLocomotion.Player.Instance.transform.position = RoomGenManager.Instance.DestroyPoint.position + new Vector3(0, 0.75f, -7.5f);
+            Player.Instance.transform.position = RoomGenInfo.Instance.DestroyPoint.position + new Vector3(0, 0.75f, -7.5f);
         }
     }
 
     IEnumerator teleport()
     {
-        GorillaLocomotion.Player.Instance.locomotionEnabledLayers = LayerNothing;
+        Player.Instance.locomotionEnabledLayers = LayerNothing;
         TeleportingPlayer = true;
         yield return new WaitForSeconds(waitTime);
-        GorillaLocomotion.Player.Instance.locomotionEnabledLayers = LayerDefault;
+        Player.Instance.locomotionEnabledLayers = LayerDefault;
         TeleportingPlayer = false;
     }
 }

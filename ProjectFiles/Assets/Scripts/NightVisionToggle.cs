@@ -5,7 +5,6 @@ public class NightVisionToggle : MonoBehaviour
 {
     bool UsingNightVision;
 
-    public RoomGen roomGen;
     public GameObject Normal;
     public GameObject Active;
 
@@ -15,15 +14,15 @@ public class NightVisionToggle : MonoBehaviour
 
         if (UsingNightVision)
         {
-            roomGen.TakeLightingToggle = false;
+            RoomGenInfo.Instance.roomGen.TakeLightingToggle = false;
             RenderSettings.ambientIntensity = 2;
             Active.SetActive(true);
             Normal.SetActive(false);
         }
         else
         {
-            roomGen.TakeLightingToggle = true;
-            RenderSettings.ambientIntensity = RoomGenManager.Instance.SkyIntensity;
+            RoomGenInfo.Instance.roomGen.TakeLightingToggle = true;
+            RenderSettings.ambientIntensity = RoomGenInfo.Instance.SkyIntensity;
             Active.SetActive(false);
             Normal.SetActive(true);
         }

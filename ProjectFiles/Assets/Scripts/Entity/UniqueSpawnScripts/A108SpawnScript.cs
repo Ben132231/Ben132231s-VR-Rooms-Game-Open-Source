@@ -5,10 +5,9 @@ public class A108SpawnScript : MonoBehaviour, ISaving
 {
     public GameObject EntityPrefab;
     public Transform SpawnTransfrom;
-    public float TimerMinValue = 330;
-    public float TimerMaxValue = 420;
+    public float TimerMinValue = 300;
+    public float TimerMaxValue = 396;
     public int SetDoor = 108;
-    public string SetSection = "A";
     public StatsManager statsManager;
     float TimerDelay;
     GameObject SpawnedEntity;
@@ -16,7 +15,7 @@ public class A108SpawnScript : MonoBehaviour, ISaving
 
     public void Spawn()
     {
-        if(RoomGenManager.Instance.DoorNumber > SetDoor && RoomGenManager.Instance.Section == SetSection)
+        if(RoomGenInfo.Instance.DoorNumber > SetDoor)
         {
             if(SpawnedEntity == null && ReadyToSpawn)
             {

@@ -21,6 +21,7 @@ public class StuffManager : MonoBehaviour
     public Animator DeathScreenEffect;
     public Animator a108ScreenEffect;
     public Animator a176ScreenEffect;
+    public Animator h176ScreenEffect;
     public PostProcessVolume a330StaticEffect;
 
     void Awake()

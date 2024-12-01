@@ -12,6 +12,7 @@ TagManager:
   - DeathManager
   - Rooms
   - ScreenEffects
+  - HidingSpot
   layers:
   - Default
   - TransparentFX
@@ -46,6 +47,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Particles
+    uniqueID: 1200123169
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

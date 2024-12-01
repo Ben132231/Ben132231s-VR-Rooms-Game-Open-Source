@@ -24,7 +24,7 @@ public class A330AttackScript : MonoBehaviour
     {
         if (IsFollowing)
         {
-            transform.position = GorillaLocomotion.Player.Instance.GorillaCamera.transform.position;
+            transform.position = Player.Instance.GorillaCamera.transform.position;
         }
         if (HitGroundTransform.position.y < 0 && !AttackHitGround)
         {

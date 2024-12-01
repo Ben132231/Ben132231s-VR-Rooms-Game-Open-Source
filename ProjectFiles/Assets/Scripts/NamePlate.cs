@@ -13,6 +13,8 @@ public class NamePlate : MonoBehaviour
     [Header("Unique Names")]
     public Color Ben132231Color;
     public Color HenryColor;
+    public Color MissingNoColor;
+    public TMP_FontAsset MissingNoFont;
 
     void Awake()
     {
@@ -27,6 +29,11 @@ public class NamePlate : MonoBehaviour
         if (textObject.text.Contains("Henry"))
         {
             textObject.color = HenryColor;
+        }
+        if (textObject.text.Contains("MissingNo"))
+        {
+            textObject.color = MissingNoColor;
+            textObject.font = MissingNoFont;
         }
     }
 }

@@ -38,10 +38,10 @@ public class CheckPointButton : MonoBehaviour
             DoorOpenDelay -= Time.deltaTime;
             if (DoorOpenDelay > 0)
             {
-                RoomGenManager.Instance.CurrentGeneratedRoom.GetComponentInChildren<DoorScript>().OpenDoor(true);
+                RoomGenInfo.Instance.CurrentGeneratedRoom.GetComponentInChildren<DoorScript>().OpenDoor(true);
                 DoorOpenDelay = DoorOpenDelayFrequency;
             }
-            if (RoomGenManager.Instance.DoorNumber > MaxDoorsOpen)
+            if (RoomGenInfo.Instance.DoorNumber > MaxDoorsOpen)
             {
                 StartCoroutine(teleport());
                 roomGen.UsingCheckPoint = false;
@@ -50,7 +50,7 @@ public class CheckPointButton : MonoBehaviour
 
         if (TeleportingPlayer)
         {
-            GorillaLocomotion.Player.Instance.transform.position = RoomGenManager.Instance.DestroyPoint.position + new Vector3(0, 0.75f, -7.5f);
+            Player.Instance.transform.position = RoomGenInfo.Instance.DestroyPoint.position + new Vector3(0, 0.75f, -7.5f);
         }
     }
 
@@ -71,10 +71,10 @@ public class CheckPointButton : MonoBehaviour
     
     IEnumerator teleport()
     {
-        GorillaLocomotion.Player.Instance.locomotionEnabledLayers = LayerNothing;
+        Player.Instance.locomotionEnabledLayers = LayerNothing;
         TeleportingPlayer = true;
         yield return new WaitForSeconds(waitTime);
-        GorillaLocomotion.Player.Instance.locomotionEnabledLayers = LayerDefault;
+        Player.Instance.locomotionEnabledLayers = LayerDefault;
         TeleportingPlayer = false;
     }
 }

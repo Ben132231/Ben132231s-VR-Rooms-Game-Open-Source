@@ -16,7 +16,7 @@ public class ToggleEntitySpawning : MonoBehaviour
     {
         if (!toggle)
         {
-            RoomGenManager.Instance.DisableEntitySpawning = true;
+            RoomGenInfo.Instance.DisableEntitySpawning = true;
 
             foreach (var buttons in buttonsToDisable)
             {
@@ -33,7 +33,7 @@ public class ToggleEntitySpawning : MonoBehaviour
         }
         else
         {
-            RoomGenManager.Instance.DisableEntitySpawning = false;
+            RoomGenInfo.Instance.DisableEntitySpawning = false;
 
             foreach (var buttons in buttonsToDisable)
             {

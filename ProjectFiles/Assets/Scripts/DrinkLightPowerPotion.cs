@@ -44,8 +44,8 @@ public class DrinkLightPowerPotion : MonoBehaviour
         yield return new WaitForSeconds(3.5f);
 
         SelfMesh.enabled = true;
-        GorillaLocomotion.Player.Instance.DisableAllLightPowers();
-        GorillaLocomotion.Player.Instance.ToggleLights(false);
+        Player.Instance.DisableAllLightPowers();
+        Player.Instance.ToggleLights(false);
 
         foreach (var otherMeshes in OtherMeshes)
         {
@@ -57,10 +57,10 @@ public class DrinkLightPowerPotion : MonoBehaviour
 
         yield return new WaitForSeconds(4.5f);
 
-        GorillaLocomotion.Player.Instance.SetCurrentHeadSpotLight(IndexToChangeLightPower);
-        GorillaLocomotion.Player.Instance.ToggleLights(true);
-        GorillaLocomotion.Player.Instance.ChangeLightsColors(ChangedColor);
-        GorillaLocomotion.Player.Instance.ChangeHandSpheresColor(ChangedOuterSphereColor, ChangedInnerSphereColor);
+        Player.Instance.SetCurrentHeadSpotLight(IndexToChangeLightPower);
+        Player.Instance.ToggleLights(true);
+        Player.Instance.ChangeLightsColors(ChangedColor);
+        Player.Instance.ChangeHandSpheresColor(ChangedOuterSphereColor, ChangedInnerSphereColor);
         StuffManager.Instance.fastAudioManager.CreateFastAudio(PotionEffectFinishSound, Camera.main.transform.position, 0.4f, 1f, 10f, true);
     }
 }

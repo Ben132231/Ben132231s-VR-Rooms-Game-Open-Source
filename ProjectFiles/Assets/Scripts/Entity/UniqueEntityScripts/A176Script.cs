@@ -40,11 +40,11 @@ public class A176Script : MonoBehaviour
     {
         if (!ReboundDirection)
         {
-            transform.position = Vector3.MoveTowards(transform.position, RoomGenManager.Instance.DestroyPoint.position, speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, RoomGenInfo.Instance.DestroyPoint.position, speed * Time.deltaTime);
         }
         else
         {
-            transform.position = Vector3.MoveTowards(transform.position, RoomGenManager.Instance.EntitySpawnPoint.position, speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, RoomGenInfo.Instance.EntitySpawnPoint.position, speed * Time.deltaTime);
         }
     }
 
@@ -52,7 +52,7 @@ public class A176Script : MonoBehaviour
     {
         if (!ReboundDirection)
         {
-            if (Vector3.Distance(transform.position, RoomGenManager.Instance.DestroyPoint.position) < 0.4f)
+            if (Vector3.Distance(transform.position, RoomGenInfo.Instance.DestroyPoint.position) < 0.4f)
             {
                 ReboundDirection = true;
                 ReboundAmount += 0.5f;
@@ -62,13 +62,13 @@ public class A176Script : MonoBehaviour
                 if (ReboundAmount >= MaxReboundAmount)
                 {
                     Destroy(gameObject);
-                    RoomGenManager.Instance.CurrentGeneratedRoom.GetComponentInChildren<CurrentDoor>().GetComponent<DoorScript>().OpenDoor(false);
+                    RoomGenInfo.Instance.CurrentGeneratedRoom.GetComponentInChildren<CurrentDoor>().GetComponent<DoorScript>().OpenDoor(false);
                 }
             }
         }
         else
         {
-            if (Vector3.Distance(transform.position, RoomGenManager.Instance.EntitySpawnPoint.position) < 1)
+            if (Vector3.Distance(transform.position, RoomGenInfo.Instance.EntitySpawnPoint.position) < 1)
             {
                 ReboundDirection = false;
                 ReboundAmount += 0.5f;

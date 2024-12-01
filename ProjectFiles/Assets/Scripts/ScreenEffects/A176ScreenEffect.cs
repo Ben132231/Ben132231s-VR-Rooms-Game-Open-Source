@@ -25,7 +25,7 @@ public class A176ScreenEffect : MonoBehaviour
         colorGrading.colorFilter.value = colorFilterValue;
         colorGrading.postExposure.value = postExposureValue;
 
-        if (screenEffectAnimatior.GetCurrentAnimatorStateInfo(0).IsName("A176_ScreenEffectAnim") && !GorillaLocomotion.Player.Instance.IsDead)
+        if (screenEffectAnimatior.GetCurrentAnimatorStateInfo(0).IsName("A176_ScreenEffectAnim") && !Player.Instance.IsDead)
         {
             postProcess.isGlobal = true;
         }

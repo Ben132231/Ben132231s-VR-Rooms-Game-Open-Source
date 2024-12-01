@@ -23,7 +23,7 @@ public class A108ScreenEffect : MonoBehaviour
         colorGrading.saturation.value = saturationValue;
         colorGrading.postExposure.value = postExposureValue;
 
-        if (screenEffectAnimatior.GetCurrentAnimatorStateInfo(0).IsName("A108_ScreenEffectAnim") && !GorillaLocomotion.Player.Instance.IsDead)
+        if (screenEffectAnimatior.GetCurrentAnimatorStateInfo(0).IsName("A108_ScreenEffectAnim") && !Player.Instance.IsDead)
         {
             postProcess.isGlobal = true;
         }

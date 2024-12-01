@@ -2571,10 +2571,8 @@ MonoBehaviour:
   m_VersionIndex: 14226
   m_IsSelectable: 1
   m_SelectedFaces: 
-  m_SelectedEdges:
-  - a: 256
-    b: 257
-  m_SelectedVertices: 0001000001010000
+  m_SelectedEdges: []
+  m_SelectedVertices: 
 --- !u!114 &441365800778684663
 MonoBehaviour:
   m_ObjectHideFlags: 0

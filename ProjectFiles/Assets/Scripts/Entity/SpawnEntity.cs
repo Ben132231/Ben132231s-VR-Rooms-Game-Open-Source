@@ -9,7 +9,6 @@ public class SpawnEntity : MonoBehaviour, ISaving
     public float TimerMinValue = 120;
     public float TimerMaxValue = 160;
     public int SetDoor = 24;
-    public string SetSection = "A";
     public StatsManager statsManager;
     float TimerDelay;
     GameObject SpawnedEntity;
@@ -17,7 +16,7 @@ public class SpawnEntity : MonoBehaviour, ISaving
 
     public void Spawn()
     {
-        if(RoomGenManager.Instance.DoorNumber > SetDoor && RoomGenManager.Instance.Section == SetSection)
+        if(RoomGenInfo.Instance.DoorNumber > SetDoor)
         {
             if(SpawnedEntity == null && ReadyToSpawn)
             {

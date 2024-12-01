@@ -106,29 +106,29 @@ public class EntityScript : MonoBehaviour
 
     void NormalMovement()
     {
-        transform.position = Vector3.MoveTowards(transform.position, RoomGenManager.Instance.DestroyPoint.position, speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, RoomGenInfo.Instance.DestroyPoint.position, speed * Time.deltaTime);
     }
 
     void ReboundMovement()
     {
         if (!ReboundDirection)
         {
-            transform.position = Vector3.MoveTowards(transform.position, RoomGenManager.Instance.DestroyPoint.position, speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, RoomGenInfo.Instance.DestroyPoint.position, speed * Time.deltaTime);
         }
         else
         {
-            transform.position = Vector3.MoveTowards(transform.position, RoomGenManager.Instance.EntitySpawnPoint.position, speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, RoomGenInfo.Instance.EntitySpawnPoint.position, speed * Time.deltaTime);
         }
     }
 
     void NormalDestroy()
     {
-        if (Vector3.Distance(transform.position, RoomGenManager.Instance.DestroyPoint.position) < 0.4f)
+        if (Vector3.Distance(transform.position, RoomGenInfo.Instance.DestroyPoint.position) < 0.4f)
         {
             Destroy(gameObject);
             if (CanBreakDoor)
             {
-                RoomGenManager.Instance.CurrentGeneratedRoom.GetComponentInChildren<CurrentDoor>().GetComponent<DoorScript>().OpenDoor(false);
+                RoomGenInfo.Instance.CurrentGeneratedRoom.GetComponentInChildren<CurrentDoor>().GetComponent<DoorScript>().OpenDoor(false);
             }
         }
     }
@@ -137,7 +137,7 @@ public class EntityScript : MonoBehaviour
     {
         if (!ReboundDirection)
         {
-            if (Vector3.Distance(transform.position, RoomGenManager.Instance.DestroyPoint.position) < 0.4f)
+            if (Vector3.Distance(transform.position, RoomGenInfo.Instance.DestroyPoint.position) < 0.4f)
             {
                 ReboundDirection = true;
                 ReboundAmount += 0.5f;
@@ -150,14 +150,14 @@ public class EntityScript : MonoBehaviour
                     Destroy(gameObject);
                     if (CanBreakDoor)
                     {
-                        RoomGenManager.Instance.CurrentGeneratedRoom.GetComponentInChildren<CurrentDoor>().GetComponent<DoorScript>().OpenDoor(false);
+                        RoomGenInfo.Instance.CurrentGeneratedRoom.GetComponentInChildren<CurrentDoor>().GetComponent<DoorScript>().OpenDoor(false);
                     }
                 }
             }
         }
         else
         {
-            if (Vector3.Distance(transform.position, RoomGenManager.Instance.EntitySpawnPoint.position) < 1)
+            if (Vector3.Distance(transform.position, RoomGenInfo.Instance.EntitySpawnPoint.position) < 1)
             {
                 ReboundDirection = false;
                 ReboundAmount += 0.5f;
@@ -175,11 +175,11 @@ public class EntityScript : MonoBehaviour
 
     void CheckLockerMovement()
     {
-        if (Vector3.Distance(transform.position, RoomGenManager.Instance.DestroyPoint.position) < 6 && !isChecking)
+        if (Vector3.Distance(transform.position, RoomGenInfo.Instance.DestroyPoint.position) < 6 && !isChecking)
         {
             if (Room_Target == null)
             {
-                Room_Target = RoomGenManager.Instance.CurrentGeneratedRoom;
+                Room_Target = RoomGenInfo.Instance.CurrentGeneratedRoom;
                 isChecking = true;
             }
         }
@@ -190,7 +190,7 @@ public class EntityScript : MonoBehaviour
         }
         if (!isChecking && !isCheckingTriggerd)
         {
-            transform.position = Vector3.MoveTowards(transform.position, RoomGenManager.Instance.DestroyPoint.position, speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, RoomGenInfo.Instance.DestroyPoint.position, speed * Time.deltaTime);
         }
         if (isChecking && Locker_Target != null)
         {
@@ -224,6 +224,6 @@ public class EntityScript : MonoBehaviour
             }
             yield return new WaitForSeconds(1.8f);
         }
-        Locker_Target = RoomGenManager.Instance.DestroyPoint;
+        Locker_Target = RoomGenInfo.Instance.DestroyPoint;
     }
 }

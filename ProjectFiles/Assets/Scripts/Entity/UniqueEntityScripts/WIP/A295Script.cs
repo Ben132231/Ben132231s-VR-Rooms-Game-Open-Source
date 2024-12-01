@@ -38,7 +38,6 @@ public class A295Script : MonoBehaviour
         if (!DelayMovement)
         {
             Movement();
-            NormalDestroy();
         }
         else
         {
@@ -53,23 +52,14 @@ public class A295Script : MonoBehaviour
 
     void Movement()
     {
-        if (Vector3.Distance(transform.position, RoomGenManager.Instance.DestroyPoint.position) < 7.5f && !ExplodingTime)
+        if (Vector3.Distance(transform.position, RoomGenInfo.Instance.DestroyPoint.position) < 7.5f && !ExplodingTime)
         {
             ExplodingTime = true;
             StartCoroutine(AboutToUseClones());
         }
         if (!ExplodingTime)
         {
-            transform.position = Vector3.MoveTowards(transform.position, RoomGenManager.Instance.DestroyPoint.position, speed * Time.deltaTime);
-        }
-    }
-
-    void NormalDestroy()
-    {
-        if (Vector3.Distance(transform.position, RoomGenManager.Instance.DestroyPoint.position) < 0.4f)
-        {
-            Destroy(gameObject);
-            RoomGenManager.Instance.CurrentGeneratedRoom.GetComponentInChildren<CurrentDoor>().GetComponent<DoorScript>().OpenDoor(false);
+            transform.position = Vector3.MoveTowards(transform.position, RoomGenInfo.Instance.DestroyPoint.position, speed * Time.deltaTime);
         }
     }
 

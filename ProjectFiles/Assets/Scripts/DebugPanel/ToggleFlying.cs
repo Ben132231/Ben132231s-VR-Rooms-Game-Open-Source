@@ -13,14 +13,14 @@ public class ToggleFlying : MonoBehaviour
     {
         if (!toggle)
         {
-            GorillaLocomotion.Player.Instance.CanFly = true;
+            Player.Instance.CanFly = true;
 
             toggle = true;
             CheckMarkBox.sprite = Checked;
         }
         else
         {
-            GorillaLocomotion.Player.Instance.CanFly = false;
+            Player.Instance.CanFly = false;
 
             toggle = false;
             CheckMarkBox.sprite = Unchecked;

@@ -4,7 +4,6 @@ public class A154SpawnScript : MonoBehaviour, ISaving
 {
     public GameObject EntityPrefab;
     public int SetDoor = 154;
-    public string SetSection = "A";
     public StatsManager statsManager;
 
     [Header("Timer Stuff")]
@@ -17,11 +16,11 @@ public class A154SpawnScript : MonoBehaviour, ISaving
 
     public void Spawn()
     {
-        if (RoomGenManager.Instance.DoorNumber > SetDoor && RoomGenManager.Instance.Section == SetSection && RoomGenManager.Instance.A154SpawnTransform != null)
+        if (RoomGenInfo.Instance.DoorNumber > SetDoor && RoomGenInfo.Instance.A154SpawnTransform != null)
         {
             if (SpawnedEntity == null && ReadyToSpawn)
             {
-                SpawnedEntity = Instantiate(EntityPrefab, RoomGenManager.Instance.A154SpawnTransform.position, RoomGenManager.Instance.A154SpawnTransform.rotation);
+                SpawnedEntity = Instantiate(EntityPrefab, RoomGenInfo.Instance.A154SpawnTransform.position, RoomGenInfo.Instance.A154SpawnTransform.rotation);
                 ReadyToSpawn = false;
                 if (!StuffManager.Instance.IsCheating)
                 {

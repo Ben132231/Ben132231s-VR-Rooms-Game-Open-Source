@@ -30,23 +30,23 @@ public class A228Script : MonoBehaviour
 
     void NormalDestroy()
     {
-        if (Vector3.Distance(transform.position, RoomGenManager.Instance.DestroyPoint.position) < 0.4f)
+        if (Vector3.Distance(transform.position, RoomGenInfo.Instance.DestroyPoint.position) < 0.4f)
         {
             Destroy(gameObject);
             if (CanBreakDoor)
             {
-                RoomGenManager.Instance.CurrentGeneratedRoom.GetComponentInChildren<CurrentDoor>().GetComponent<DoorScript>().OpenDoor(false);
+                RoomGenInfo.Instance.CurrentGeneratedRoom.GetComponentInChildren<CurrentDoor>().GetComponent<DoorScript>().OpenDoor(false);
             }
         }
     }
 
     void CheckLockerMovement()
     {
-        if (Vector3.Distance(transform.position, RoomGenManager.Instance.DestroyPoint.position) < 6 && !isChecking)
+        if (Vector3.Distance(transform.position, RoomGenInfo.Instance.DestroyPoint.position) < 6 && !isChecking)
         {
             if (Room_Target == null)
             {
-                Room_Target = RoomGenManager.Instance.CurrentGeneratedRoom;
+                Room_Target = RoomGenInfo.Instance.CurrentGeneratedRoom;
                 isChecking = true;
             }
         }
@@ -57,7 +57,7 @@ public class A228Script : MonoBehaviour
         }
         if (!isChecking && !isCheckingTriggerd)
         {
-            transform.position = Vector3.MoveTowards(transform.position, RoomGenManager.Instance.DestroyPoint.position, speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, RoomGenInfo.Instance.DestroyPoint.position, speed * Time.deltaTime);
         }
         if (isChecking && Locker_Target != null)
         {
@@ -86,6 +86,6 @@ public class A228Script : MonoBehaviour
                 }
             }
         }
-        Locker_Target = RoomGenManager.Instance.DestroyPoint;
+        Locker_Target = RoomGenInfo.Instance.DestroyPoint;
     }
 }

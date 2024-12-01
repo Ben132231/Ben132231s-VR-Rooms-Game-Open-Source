@@ -42,15 +42,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "DebugUIRespawn",
-                    "type": "Button",
-                    "id": "ce067060-b94a-4ff7-8d6f-b799da915a2b",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "SelectUIOption",
                     "type": "Button",
                     "id": "631d170e-5c6e-44a0-a582-2e95ca2273bf",
@@ -91,7 +82,7 @@
                 {
                     "name": "",
                     "id": "a5f70576-921c-4bbb-b685-6a6c570e770f",
-                    "path": "<XRController>{LeftHand}/{PrimaryButton}",
+                    "path": "<XRController>{LeftHand}/{MenuButton}",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -178,28 +169,6 @@
                 },
                 {
                     "name": "",
-                    "id": "4ea378fb-4d12-4691-948f-eea3038707f7",
-                    "path": "<XRController>{RightHand}/{SecondaryButton}",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "DebugUIRespawn",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "f03fe47e-c5dc-4a2e-930f-d307427c54cc",
-                    "path": "<XRController>{RightHand}/{PrimaryButton}",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SelectUIOption",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "5bb9b05b-3529-45cd-8cf7-9c0df3ee117e",
                     "path": "<XRController>{RightHand}/{TriggerButton}",
                     "interactions": "",
@@ -223,7 +192,7 @@
                 {
                     "name": "",
                     "id": "ce13dc40-8e8e-4194-aff2-ab4611697808",
-                    "path": "<XRController>{RightHand}/{PrimaryButton}",
+                    "path": "<XRController>{RightHand}/{SecondaryButton}",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

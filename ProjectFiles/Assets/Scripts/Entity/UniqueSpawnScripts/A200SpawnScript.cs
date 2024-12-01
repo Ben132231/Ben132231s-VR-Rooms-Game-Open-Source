@@ -3,11 +3,10 @@ using UnityEngine;
 public class A200SpawnScript : MonoBehaviour, ISaving
 {
     public GameObject EntityPrefab;
-    public float TimerMinValue = 120;
-    public float TimerMaxValue = 160;
+    public float TimerMinValue = 258;
+    public float TimerMaxValue = 308;
     public int SetDoor = 200;
-    public string SetSection = "A";
-    public float DistenceFromDoor = 4.5f;
+    public float DistenceFromDoor = 6f;
     public StatsManager statsManager;
     float TimerDelay;
     GameObject SpawnedEntity;
@@ -15,11 +14,11 @@ public class A200SpawnScript : MonoBehaviour, ISaving
 
     public void Spawn()
     {
-        if (RoomGenManager.Instance.DoorNumber > SetDoor && RoomGenManager.Instance.Section == SetSection)
+        if (RoomGenInfo.Instance.DoorNumber > SetDoor)
         {
             if (SpawnedEntity == null && ReadyToSpawn)
             {
-                SpawnedEntity = Instantiate(EntityPrefab, RoomGenManager.Instance.DestroyPoint.position + new Vector3(0, 0, DistenceFromDoor), Quaternion.identity);
+                SpawnedEntity = Instantiate(EntityPrefab, RoomGenInfo.Instance.DestroyPoint.position + new Vector3(0, 0, DistenceFromDoor), Quaternion.identity);
                 ReadyToSpawn = false;
                 if (!StuffManager.Instance.IsCheating)
                 {

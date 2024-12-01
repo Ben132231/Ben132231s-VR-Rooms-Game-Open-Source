@@ -8,9 +8,9 @@ public class DebugSpawnA154 : MonoBehaviour
 
     public void Spawn()
     {
-        if (SpawnedEntity == null && RoomGenManager.Instance.CurrentGeneratedRoom.GetComponentInChildren<A154SpawnPoint>() != null)
+        if (SpawnedEntity == null && RoomGenInfo.Instance.CurrentGeneratedRoom.GetComponentInChildren<A154SpawnPoint>() != null)
         {
-            SpawnedEntity = Instantiate(EntityPrefab, RoomGenManager.Instance.A154SpawnTransform.position, RoomGenManager.Instance.A154SpawnTransform.rotation);
+            SpawnedEntity = Instantiate(EntityPrefab, RoomGenInfo.Instance.A154SpawnTransform.position, RoomGenInfo.Instance.A154SpawnTransform.rotation);
         }
         else
         {

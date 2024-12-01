@@ -4,8 +4,6 @@ public class DoorScript : MonoBehaviour
 {
     public AudioSource audioSource;
     public AudioClip[] DoorSound;
-
-    public RoomGen roomGen;
     Animator doorAnimator;
     Collider doorCollider;
     MeshRenderer doorMeshRenderer;
@@ -15,12 +13,11 @@ public class DoorScript : MonoBehaviour
         doorCollider = GetComponent<Collider>();
         doorAnimator = GetComponent<Animator>();
         doorMeshRenderer = GetComponent<MeshRenderer>();
-        roomGen = GameObject.FindGameObjectWithTag("RoomGen").GetComponent<RoomGen>();
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("PlayerHand") && !GorillaLocomotion.Player.Instance.IsDead)
+        if(other.CompareTag("PlayerHand") && !Player.Instance.IsDead)
         {
             OpenDoor(true);
         }
@@ -38,7 +35,7 @@ public class DoorScript : MonoBehaviour
         }
         doorCollider.enabled = false;
         audioSource.PlayOneShot(DoorSound[Random.Range(0, DoorSound.Length)]);
-        roomGen.RoomGenerate();
+        RoomGenInfo.Instance.roomGen.RoomGenerate();
         Destroy(gameObject.GetComponent<DoorScript>());
     }
 }

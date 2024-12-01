@@ -165,6 +165,7 @@ MonoBehaviour:
   SpecialNames:
   - Ben132231
   - Henry
+  - MissingNo.
   YoutubersNames:
   - JimmyHere
   - DougDoug
@@ -177,7 +178,6 @@ MonoBehaviour:
   - Markiplier
   textObject: {fileID: 4362909054429599068}
   Ben132231Color: {r: 0, g: 1, b: 0, a: 1}
-  BloodRedColor: {r: 1, g: 0, b: 0, a: 1}
   HenryColor: {r: 0, g: 1, b: 1, a: 1}
 --- !u!1 &7174101571646588164
 GameObject:
@@ -344,9 +344,9 @@ MonoBehaviour:
   m_margin: {x: -0.016769905, y: 0.023418877, z: -0.017384138, w: 0.026058227}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  _SortingLayer: 0
-  _SortingLayerID: 0
-  _SortingOrder: 0
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 3317814407239582701}
   m_maskType: 0
+  _SortingLayer: 0
+  _SortingLayerID: 0
+  _SortingOrder: 0
