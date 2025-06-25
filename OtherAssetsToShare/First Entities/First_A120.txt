@@ -1,0 +1,3 @@
+Not used in the test project but planned to be in there. Made on the Steam Deck by the way.
+
+It doesn't have a behavior yet but my idea is you need to hold some sort of item you randomly get and hold it in the air for the entity to see. To keep it away. (That is going to be hard to balance though.)

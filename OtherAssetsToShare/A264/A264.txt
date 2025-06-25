@@ -1,0 +1,3 @@
+A summoner of table checkers.
+
+Similar to A-278 from Interminable Rooms. But only summons table checkers.

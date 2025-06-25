@@ -1,0 +1,3 @@
+The more you have your light on that entity. The more you're hurting it and yourself.
+
+Also the sprite changes based on what your health is at.

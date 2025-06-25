@@ -1,0 +1,8 @@
+An entity you need to avoid looking at.
+
+Appears behind the player and will despawn after a few seconds if you don’t look in the direction it’s at.
+
+It is Chara from Undertale but they don’t have control and have lost themselves to insanity.
+(This lore is going to take years to just show. That library is still in construction.)
+
+Oh and their body doesn’t exist. I think.

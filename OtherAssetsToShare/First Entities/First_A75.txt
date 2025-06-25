@@ -1,0 +1,3 @@
+A-75 is another entity in the test project.
+
+Planned to act similar to A-75 from Rooms : Low Detailed. Also has a particle with the entity. Also “lighting bolt emoji”.
