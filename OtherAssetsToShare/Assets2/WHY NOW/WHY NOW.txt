@@ -1,0 +1,15 @@
+WHY NOW is the ultimate version of A-228. (Debug Exclusive)
+
+The entity breaks every hiding spot in every generated room including newly generated room until all hiding spot are broken then the entity will go to the lobby and despawn. Which means the more rooms there are and if there’s any active entities that can break doors the longer it’s going to take for it to despawn.
+
+The entity displays one of these messages in the subtitles when it spawns.
+
+"The stars a lines and I can’t sleep."
+
+“The stars a lines and it’s going to be pain.”
+
+“The stars a lines and I’m forced to stay up.”
+
+“The stars a lines and there too bright.”
+
+“The stars a lines and it’s going to be a painful night.”

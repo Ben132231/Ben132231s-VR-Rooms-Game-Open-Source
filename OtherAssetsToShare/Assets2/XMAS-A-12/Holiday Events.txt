@@ -1,0 +1,8 @@
+Holiday events appear during certain holidays and changes certain section (Mostly A-Section) to match the corresponding holiday. With matching decorations, entities and other things. You can also get exclusive items from that event.
+
+You will be able to force certain holidays if you change the date on your device.
+
+The list of Holiday Events (DD/MM)
+- Christmas (01/12 - 31/12)
+- Halloween (01/10 - 31/10)
+- April Fool (01/04 - 12/04)

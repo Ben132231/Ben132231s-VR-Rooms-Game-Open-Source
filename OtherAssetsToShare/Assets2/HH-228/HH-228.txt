@@ -1,0 +1,1 @@
+HH-228 is a debug exclusive entity that breaks all hiding spot in the target room.

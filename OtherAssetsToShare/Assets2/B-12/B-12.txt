@@ -1,0 +1,5 @@
+B-12 is similar to A-12 but rebounds 1.5 times and breaks the door.
+
+Their design has tears dropping from their eyes. (Particle effect)
+
+This entity is still a work in progress.
