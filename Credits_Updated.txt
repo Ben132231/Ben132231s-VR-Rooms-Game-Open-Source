@@ -25,3 +25,4 @@ Freesound.org Credits
 Fonts used
 Roboto - https://fonts.google.com/specimen/Roboto
 Merriweather - https://fonts.google.com/specimen/Merriweather
+Perfect DOS VGA 437 - https://www.dafont.com/perfect-dos-vga-437.font
