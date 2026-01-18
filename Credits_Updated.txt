@@ -1,0 +1,27 @@
+Inspiration
+  Interminable Rooms (By ZvardinRB)
+	Rooms Low Detailed (By Bugggs7)
+	Doors (By LSPLASH/Lightning_Splash)
+  Rooms (By nicorocks5555)
+	Spooky's Jump Scare Mansion (By Lag Studios)
+  Gorilla Tag (By Another Axiom)
+
+Credits
+	Roblox Creator Marketplace / Interminable Rooms Wiki - For some sounds like
+		1. Locker Open/Close Audio - https://create.roblox.com/store/asset/9116646197/
+		2. Table (TODO : Find audio source)
+		3. Door - https://create.roblox.com/store/asset/5037969255/ (May not be original source. I don't know though.)
+		4. Locker Breaking (TODO : Find audio source)
+		5. Metal Door Keycard Decline Sound (TODO : Find audio source)
+	Toby Fox/Undertale/Deltarune - Some sound effect, mus_smile, funny explosion sprites and audio
+
+Freesound.org Credits
+	Thud.wav - GWMX_YOUTUBE03 - https://freesound.org/people/gianmarcogg03/sounds/339114/ (DeathThud)
+	explosion_low_fuse_1.wav - eardeer - https://freesound.org/people/eardeer/sounds/402004/ (H12_Transformation_Sound)
+	Barrel Break 3.wav - kevinkace - https://freesound.org/people/kevinkace/sounds/66771/ (A200_Spawn)
+	Wind, Synthesized, A.wav - InspectorJ - https://freesound.org/people/InspectorJ/sounds/376415/ (A200_LoopWindSound)
+	Cork3.aif - Traveler - https://freesound.org/people/Traveler/sounds/16064/ (PotionDrinking)
+
+Fonts used
+Roboto - https://fonts.google.com/specimen/Roboto
+Merriweather - https://fonts.google.com/specimen/Merriweather
