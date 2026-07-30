@@ -1,0 +1,10 @@
+A planned entity that can be found in a rare room.
+
+The room contains a side room with a window, a sliding metal door and a table with the Green Imaginary Friend Remote.
+
+The entity acts basically the same as the Imaginary Friend from Pressure.
+- There distance 40 meter from the player and visable through walls
+- They talk every 30-100 seconds
+- They have a good chance of alerting the player of any entities nearby
+
+They aren't very happy that there stuck with you though and most of there lines are complaining and annoyed.
